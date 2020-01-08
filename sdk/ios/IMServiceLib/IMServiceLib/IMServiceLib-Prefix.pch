@@ -1,0 +1,14 @@
+//
+// Prefix header for all source files of the 'IMServiceLib' target in the 'IMServiceLib' project
+//
+
+
+#import <Availability.h>
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+    #import <Foundation/NSData.h>
+    #import <UIKit/UIKit.h>
+#endif
+
+

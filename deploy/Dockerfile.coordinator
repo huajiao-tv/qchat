@@ -1,0 +1,25 @@
+# build
+FROM golang:1.12
+
+COPY ./ /go/src/github.com/huajiao-tv/qchat
+
+WORKDIR /go/src/github.com/huajiao-tv/qchat
+
+RUN go install \
+        -ldflags '-extldflags "-fno-PIC -static"' \
+        -buildmode pie \
+        -tags 'osusergo netgo static_build' \
+		github.com/huajiao-tv/qchat/servers/coordinator
+
+# image
+FROM alpine:3.9
+
+COPY --from=0 /go/bin/coordinator /data/qchat/bin/coordinator
+
+RUN mkdir -p /data/qchat/log/
+
+
+EXPOSE 6720
+EXPOSE 16700
+
+CMD ["sh", "-c", "/data/qchat/bin/coordinator -n=${HOSTNAME}:16700 -d=${CLUSTER} -k=${KEEPER}"]

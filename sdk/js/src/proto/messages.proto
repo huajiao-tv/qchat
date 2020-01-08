@@ -1,0 +1,285 @@
+package qihoo.protocol.messages;
+
+option java_package = "com.qihoo.contact.cloud.protocol.messages";
+option java_outer_classname = "CommunicationData";
+
+/* Common Define Begin */
+message Pair {
+    required bytes key = 1;
+    optional bytes value = 2;
+}
+
+message Error {
+    required uint32 id = 1;
+    optional bytes description = 2;
+}
+
+message User {
+    required string userid = 1;
+    repeated Pair property_pairs = 2;
+}
+
+message Info {
+    repeated Pair property_pairs = 1; /*key=info_id,sender,content,time */
+}
+/* Common Define  End */
+
+/* IM Define Begin */
+
+//plain txt
+message LoginReq { //msgid = 100001
+                   required string mobile_type = 1; /* android, ios, pc */
+                   /*
+                     net_type: 0:unkonwn 1:2g 2:3g 3:wifi 4:ethe 5:4g
+                    */
+                   required uint32 net_type = 2;
+                   required string server_ram = 3;
+                   optional bytes secret_ram = 4; // secret_server + 8 char ram, the field crypt use user's password
+                   optional uint32 app_id = 5 [default = 2000]; // application id , default value is 2000
+                   optional uint32 heart_feq = 6 [default = 300]; // heart frequency of second, default value is 300
+                   optional string deviceid = 7 [default = ""];
+                   optional string platform = 8; // web, pc, mobile
+                   optional string verf_code = 9; // verification code
+                   optional bool not_encrypt = 10; // indicates whether client supports communicates without encrypt, true means support
+}
+
+//crypt txt, key is md5(password)
+message LoginResp { //msgid = 200001
+                    required uint32 timestamp = 1;
+                    required string session_id = 2;
+                    required string session_key = 3;
+                    optional string client_login_ip = 4;
+                    optional string serverip = 5; //for debug
+}
+
+//crypt txt, key is session_key
+message ChatReq { //msgid = 100002  peer1 -> server -> peer2
+                  required bytes body = 1;
+                  optional uint32 body_id = 2; //from 1 begin
+                  /*
+                    more_flag: 0:end 1:continue
+                  */
+                  optional uint32 more_flag = 3; //have more packet
+                  /*
+                    body_type: 0:text 1:audio 2:pic_url, 3:audio_and_pic
+                   */
+                  required uint32 body_type = 4; //text,audio,pic_url,audio_and_pic,...
+                  optional bool store = 5; //yes:need store, no:dont store, default yes
+                  optional bytes m_parameter = 6;
+                  optional uint32 service_id = 7;
+                  optional bytes s_parameter = 8;
+                  // 9 and 10 wasted
+                  // optional string  conv_id     = 9; // conversation id, patched in every message
+                  // optional bool   is_new_conv  = 10 [default = false]; // whether this is the first message of a new conversation
+                  optional uint32 expire_time = 12; // expire time interval, the unit is second
+}
+
+message ChatResp { //msgid = 200002 server -> peer1
+                   required uint32 result = 1; //success : 0, failed = 1
+                   optional uint32 body_id = 2;
+}
+
+message GetInfoReq { //msgid = 100004
+                     required string info_type = 1; //peer, push, group, mobile, chatroom ...
+                     required int64 get_info_id = 2;
+                     optional int32 get_info_offset = 3; //1,2,3 or -1,-2,-3
+                     optional bytes s_parameter = 4;
+}
+
+message GetInfoResp { //msgid = 200004
+                      required string info_type = 1; //peer, push, group, mobile, chatroom ...
+                      repeated Info infos = 2; //Info may include info_id,body_type,timestamp,sender,original sn,...
+                      optional int64 last_info_id = 3; //server
+                      optional bytes s_parameter = 4;
+}
+
+message GetMultiInfosReq { //msgid = 100100
+                           required string info_type = 1; //peer, push, group, mobile, chatroom ...
+                           repeated int64 get_info_ids = 2;
+                           optional bytes s_parameter = 3;
+}
+
+message GetMultiInfosResp { //msgid = 200100
+                            required string info_type = 1; //peer, push, group, mobile, chatroom ...
+                            repeated Info infos = 2; //Info may include info_id,body_type,timestamp,sender,original sn,...
+                            optional int64 last_info_id = 3; //server
+                            optional bytes s_parameter = 4;
+}
+
+message LogoutReq { //msgid = 100005
+                    optional string reason = 1;
+}
+
+message LogoutResp { //msgid = 200005  may not send
+                     required uint32 result = 1; //success : 0, failed = 1
+}
+
+message InitLoginReq { //msgid = 100009
+                       required string client_ram = 1;
+                       optional string sig = 2; // signature of token
+}
+
+message InitLoginResp { //msgid = 200009
+                        required string client_ram = 1;
+                        required string server_ram = 2;
+}
+
+// all service control cmd
+message Service_Req { //msgid = 100011
+                      required uint32 service_id = 1; //group : 10000001; distribute : 10000002; circle : 10000003; rm : 10000004; apns : 10000005; chatroom : 10000006
+                      required bytes request = 2;
+}
+
+message Service_Resp { //msgid = 200011
+                       required uint32 service_id = 1; //group : 10000001; distribute : 10000002; circle : 10000003; rm : 10000004; apns : 10000005; chatroom : 10000006
+                       required bytes response = 2;
+}
+
+// a lot of userid query
+message ReqEQ1User {
+    required string userid = 1;
+    required string user_type = 2; //jid, qid, phone, email
+    optional uint32 app_id = 3;
+}
+
+message RespEQ1User {
+    required string userid = 1;
+    required string user_type = 2;
+    required int32 status = 3; //0:not registry;  1:registry, offline, not reachable; 2:registry, offline, reachable; 3:registry, online, reachable
+    optional string jid = 4;
+    optional uint32 app_id = 5;
+    optional string platform = 6; // web, pc, mobile
+    optional string mobile_type = 7; /* android, ios */
+    optional uint32 client_ver = 8;
+}
+
+message Ex1QueryUserStatusReq { //msgid = 100012
+                                repeated ReqEQ1User user_list = 1;
+}
+
+message Ex1QueryUserStatusResp { //msgid = 200012
+                                 repeated RespEQ1User user_list = 1;
+}
+
+
+message Request {
+
+    optional LoginReq login = 2; //msgid = 100001
+    optional ChatReq chat = 3; //msgid = 100002
+
+    optional GetInfoReq get_info = 5; //msgid = 100004
+    optional LogoutReq logout = 6; //msgid = 100005
+
+    optional InitLoginReq init_login_req = 9; //msgid = 100009
+    optional Service_Req service_req = 11; //msgid = 100011
+    optional Ex1QueryUserStatusReq e1_query_user = 12; //msgid = 100012
+    optional GetMultiInfosReq get_multi_infos = 100; //msgid = 100100
+
+}
+
+message Response {
+    optional Error error = 1;
+
+    optional LoginResp login = 3; //msgid = 200001
+    optional ChatResp chat = 4; //msgid = 200002
+
+    optional GetInfoResp get_info = 6; //msgid = 200004
+    optional LogoutResp logout = 7; //msgid = 200005
+
+    optional InitLoginResp init_login_resp = 10; //msgid = 200009
+
+    optional Service_Resp service_resp = 12; //msgid = 200011
+    optional Ex1QueryUserStatusResp e1_query_user = 13; //msgid = 200012
+    optional GetMultiInfosResp get_multi_infos = 100; //msgid = 200100
+}
+
+/* Client active send, Server passive receive Message End */
+
+/* Server active send, Client passive receive Message Begin */
+message NewMessageNotify { //msgid = 300000
+                           required string info_type = 1; //peer, push, group, status, chatroom ...
+                           optional bytes info_content = 2;
+                           optional int64 info_id = 3; //the message's id.
+                           optional uint32 query_after_seconds = 4; //client send query after this seconds
+}
+
+message ReLoginNotify { //msgid = 300001
+                        optional string new_ip = 1; // client's new login ip
+}
+
+message ReConnectNotify { //msgid = 300002
+                          optional string ip = 1; // new dispatcher's ip
+                          optional uint32 port = 2; // new dispatcher's port
+                          repeated string more_ips = 3; // more candidate ips
+}
+
+message Notify {
+    optional NewMessageNotify newinfo_ntf = 1; //msgid = 300000
+    optional ReLoginNotify relogin_ntf = 2; //msgid = 300001
+    optional ReConnectNotify reconnect_ntf = 3; //msgid = 300002
+}
+
+message Ack { //msgid = 400000
+              required uint32 result = 1;
+}
+/* Server active send, Client passive receive Message End */
+
+/* Message Router Area1 to Area2 Begin */
+message RouteInfo {
+    required bytes username = 1; //jid or phonenumber or erlang term_to_binary
+    required string msg_exchanger = 2; //area name
+    required string msg_router = 3; //msgrouter name
+}
+
+message Proxy {
+    required string sender = 1; //username1@360.cn/pc
+    repeated RouteInfo receiver = 2;
+}
+/* Message Router Area1 to Area2 End */
+
+message Message {
+    required uint32 msgid = 1; //message type
+    required uint64 sn = 2; //Response's sn equal Request's sn;Ack's sn equal Notify's sn
+    optional string sender = 3; //jid or qid
+    optional string receiver = 4; //phonenumber or qid
+    optional string receiver_type = 5; //default:phone, qid,  other service: null
+    optional Request req = 6;
+    optional Response resp = 7;
+    optional Notify notify = 8;
+    optional Ack ack = 9;
+    optional Proxy proxy_mesg = 10;
+    optional uint64 client_data = 11; //reverse for user_data
+    optional string sender_type = 12; //default:jid, qid
+    optional string sender_jid = 13;
+}
+
+/* IM Define End */
+
+/*
+
+Protocol version 0:
+client send to server first packet format :
+	ALL = magic(12bytes,network order) + len(4bytes,network order) + Message(protobuf), len = magic_len + len_len + message_len
+	magic = flag(2bytes) + protocol_version(4bits) + client_version(12bits) + appid(2bytes) + reserved(6bytes)
+	flag = "qh"
+
+other all packets format :
+	ALL = len(4bytes,network order) + Message(protobuf), len = magic_len + len_len + message_len
+
+
+Protocol version 1:
+client send to server first packet format :
+	ALL = magic(12bytes,network order) + len(4bytes,network order) + Message(protobuf), len = magic_len + len_len + message_len
+	magic = flag(2bytes) + protocol_version(4bits) + client_version(12bits) + appid(2bytes) + reserved(6bytes)
+	flag = "qh"
+
+server send to client first packet format :
+	ALL = magic(2bytes,network order) + len(4bytes,network order) + Message(protobuf), len = magic_len + len_len + message_len
+	magic = flag(2bytes)
+	flag = "qh"
+
+other all packets format :
+	ALL = len(4bytes,network order) + Message(protobuf), len = magic_len + len_len + message_len
+
+*/
+

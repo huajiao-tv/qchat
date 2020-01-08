@@ -1,0 +1,37 @@
+version: '2'
+
+services:
+
+  gokeeper_etcd:
+    container_name: qchat_gokeeper_etcd
+    image: 'bitnami/etcd:latest'
+    environment:
+      - ALLOW_NONE_AUTHENTICATION=yes
+      - ETCD_ADVERTISE_CLIENT_URLS=http://127.0.0.1:2379
+  gokeeper_main:
+    container_name: qchat_gokeeper_main
+    image: 'huajiao/gokeeper'
+    ports:
+      - '7000:7000'
+      - '7001:7001'
+      - '17000:17000'
+      - '17001:17001'
+    depends_on:
+      - gokeeper_etcd
+    volumes:
+      - "./conf:/tmp/gokeeper/init/qchat_test"
+  qchat_redis:
+    container_name: qchat_redis
+    image: 'redis'
+    entrypoint:
+      "redis-server --appendonly yes --requirepass 'redis'"
+  qchat_mongo:
+    container_name: qchat_mongo
+    build:
+      context: db
+      dockerfile: Dockerfile.mongo
+    ports:
+      - '27017:27017'
+    environment:
+      - USER=root
+      - PASSWORD=123456

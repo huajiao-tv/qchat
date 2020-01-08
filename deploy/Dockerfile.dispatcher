@@ -1,0 +1,25 @@
+# build
+FROM golang:1.12
+
+COPY ./ /go/src/github.com/huajiao-tv/qchat
+
+WORKDIR /go/src/github.com/huajiao-tv/qchat
+
+RUN go install \
+        -ldflags '-extldflags "-fno-PIC -static"' \
+        -buildmode pie \
+        -tags 'osusergo netgo static_build' \
+		github.com/huajiao-tv/qchat/servers/dispatcher
+
+# image
+FROM alpine:3.9
+
+COPY --from=0 /go/bin/dispatcher /data/qchat/bin/dispatcher
+
+RUN mkdir -p /data/qchat/log/
+COPY ./vendor/github.com/johntech-o/iphelper/ip.dat /data/qchat/data/ip.dat
+
+
+EXPOSE 80
+
+CMD ["sh", "-c", "/data/qchat/bin/dispatcher -n=${HOSTNAME}:16100 -d=${CLUSTER} -k=${KEEPER}"]

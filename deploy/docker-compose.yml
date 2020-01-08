@@ -1,0 +1,68 @@
+version: '2'
+
+services:
+
+  qchat_center:
+    container_name: qchat_center
+    build:
+      context: ../
+      dockerfile: deploy/Dockerfile.center
+    ports:
+      - '8080:80'
+    environment:
+      - KEEPER=gokeeper_main:7000
+      - CLUSTER=qchat_test
+
+  qchat_coordinator:
+    container_name: qchat_coordinator
+    build:
+      context: ../
+      dockerfile: deploy/Dockerfile.coordinator
+    environment:
+      - KEEPER=gokeeper_main:7000
+      - CLUSTER=qchat_test
+
+  qchat_dispatcher:
+    container_name: qchat_dispatcher
+    build:
+      context: ../
+      dockerfile: deploy/Dockerfile.dispatcher
+    environment:
+      - KEEPER=gokeeper_main:7000
+      - CLUSTER=qchat_test
+    ports:
+      - '8088:80'
+  qchat_gateway:
+    container_name: qchat_gateway
+    build:
+      context: ../
+      dockerfile: deploy/Dockerfile.gateway
+    environment:
+      - KEEPER=gokeeper_main:7000
+      - CLUSTER=qchat_test
+    ports:
+      - '9090:80'
+  qchat_router:
+    container_name: qchat_router
+    build:
+      context: ../
+      dockerfile: deploy/Dockerfile.router
+    environment:
+      - KEEPER=gokeeper_main:7000
+      - CLUSTER=qchat_test
+  qchat_saver:
+    container_name: qcaht_saver
+    build:
+      context: ../
+      dockerfile: deploy/Dockerfile.saver
+    environment:
+      - KEEPER=gokeeper_main:7000
+      - CLUSTER=qchat_test
+  qchat_session:
+    container_name: qchat_session
+    build:
+      context: ../
+      dockerfile: deploy/Dockerfile.session
+    environment:
+      - KEEPER=gokeeper_main:7000
+      - CLUSTER=qchat_test

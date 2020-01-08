@@ -1,0 +1,59 @@
+{
+  "name": "@q/hj-livesocket",
+  "version": "1.0.1",
+  "description": "huajiao livesocket",
+  "files": [
+    "dist"
+  ],
+  "browserslist": [
+    "> 5%",
+    "not ie <= 11",
+    "Firefox > 42",
+    "Chrome > 23",
+    "Safari > 8"
+  ],
+  "author": "xuyihao-hj@huajiao.tv",
+  "license": "MIT",
+  "maintainers": [
+    {
+      "name": "j-xuyihao-hj",
+      "email": "xuyihao-hj@huajiao.tv"
+    }
+  ],
+  "main": "./dist/index.js",
+  "scripts": {
+    "build": "webpack --progress --display-chunks -p",
+    "dev": "parcel serve examples/index.html --out-dir=examples/temp"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ],
+    "plugins": [
+      "add-module-exports",
+      "babel-plugin-bulk-import",
+      "@babel/plugin-proposal-class-properties"
+    ]
+  },
+  "dependencies": {
+    "bytebuffer": "^5.0.1",
+    "pako": "^1.0.10",
+    "protobufjs": "^6.8.8",
+    "wolfy87-eventemitter": "^5.2.6"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-add-module-exports": "^1.0.2",
+    "babel-plugin-bulk-import": "^2.0.0",
+    "core-js": "^3.1.3",
+    "parcel-bundler": "^1.12.3",
+    "uglifyjs-webpack-plugin": "^2.1.3",
+    "webpack": "^4.32.2",
+    "webpack-cli": "^3.3.2"
+  }
+}

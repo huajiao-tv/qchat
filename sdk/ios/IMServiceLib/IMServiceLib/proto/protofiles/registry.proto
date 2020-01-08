@@ -1,0 +1,86 @@
+
+package qihoo.protocol.registry;
+
+option java_package = "com.qihoo.contact.cloud.protocol.messages";
+option java_outer_classname = "Registry";
+
+
+//key-value message
+message Pair {
+    required bytes key   = 1;
+    required bytes value = 2;
+}
+
+
+//=========down register=============
+
+/*
+* get verification code  request
+*/
+message Down_Request_Get_Verifi_Code{
+	required int32 appid = 1;
+	required bytes cliver = 2;
+	required bytes pn = 3;//encrypt by default key;
+	optional bytes pwd = 4; //encrypt by default key;
+}
+/*
+* get verification code response
+*/
+message Down_Response_Get_Verifi_Code{
+	required int32 errorcode = 1; //1--means success, 2--means failed
+}
+
+/*
+* register request
+*/
+message Down_Request_Register{
+	required int32 appid = 1;
+	required bytes cliver = 2;
+	required bytes pn = 3;//encryot by default key
+	required bytes rvc = 4;//encrypt by  vc
+	optional bytes app_uuid = 5; //encrypt by vc;
+	repeated Pair info = 6;//encrypt by vc,only on value
+}
+/*
+* register response
+*/
+message Down_Response_Register{
+	required int32 errorcode = 1;
+	optional bytes jid = 2;//encrypt by vc;
+	optional bytes password = 3;//encrypt by vc
+}
+
+
+//=========qid register=============
+message QID_Register_Request {
+        required bytes cookie_Q = 1;
+        required bytes cookie_T = 2;
+        required bytes qid = 3;
+        repeated Pair info = 4;
+        optional int32 appid = 5; //3000
+        optional bytes client_ver = 6;
+}
+
+
+message QID_Register_Response {
+        required int32 errorcode = 1;
+        optional bytes errmsg = 2;
+        optional bytes jid = 3;
+        optional bytes password = 4;
+}
+
+//=========Query phonenumbers register status=============
+//request url must be http://xxxxxxxx/cv=xxx&q=xxx
+//The whole message will be serialized to bytes and then encrypted by password
+message Query_Register_Status_Request
+{
+	repeated bytes pn = 1; //big endian
+}
+
+ //The whole message will be serialized to bytes and then encrypted by password, only return registered phone-numbers
+message Query_Register_Status_Response
+{
+	required int32  errorcode = 1;
+	required bytes errmsg = 2;
+	repeated bytes pn_idx = 3; //start from 0
+}

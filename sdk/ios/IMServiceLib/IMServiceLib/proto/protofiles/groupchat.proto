@@ -1,0 +1,97 @@
+package qihoo.protocol.group;
+
+option java_package = "com.huajiao.comm.protobuf";
+option java_outer_classname = "GroupChatProto";
+
+
+//-------------------command list-------------------
+
+// group notification
+message GroupNotify{
+    required string groupid      = 1;
+    required uint64 msgid        = 2;
+    optional string summary      = 3;
+}
+
+/*
+ * get group message request
+ */
+message GroupMessageReq{
+    required string groupid      = 1;     //groupid
+    required string traceid      = 2; 
+    optional uint64 startid      = 3;     //start msg id
+    optional int32  offset       = 4;     //offset, > 0, means [startid, startid+offset], < 0 means from [startid-offset, startid]
+}
+
+
+/*
+ * group message
+ */
+message GroupMessage{
+    required uint64 msgid        = 1;     //msg id
+    required string content      = 2;     //msg body
+    optional int64  sendtime     = 3;     //send time
+    optional string sender       = 4;     //todo
+}
+
+/*
+ * get group message response
+ */
+message GroupMessageResp{
+    required string          groupid      = 1;     //groupid
+    required string          traceid      = 2; 
+    repeated GroupMessage    msglist      = 3;     //msg list
+    optional uint64          maxid        = 4;     //current max msg id
+    optional int64           version      = 5;     //current group version
+}
+
+/*
+ * sync user groups request
+ */
+message GroupSyncReq{
+    required string          groupid      = 1;
+}
+
+/*
+ * 群信息
+ */
+message GroupInfo{
+    required string          groupid       = 1;
+    optional uint64          maxid         = 2;
+    optional int64           version       = 3;
+    optional uint64          startid       = 4;
+}
+
+//-----message from user to server-----//
+/**
+* payloadtype options:
+* 108 -- sync group request
+* 109 -- getmsgreq
+*/
+message GroupUpPacket{
+    required uint32               payload     = 1;
+
+    repeated GroupSyncReq         syncreq     = 6; // server will sync all groups information if caller did not set any member if payload is 108
+    repeated GroupMessageReq      getmsgreq   = 7;
+}
+
+//-----message from server to user-----//
+/**
+ * payloadtype options:
+ * 108 -- sync group response
+ * 109 -- getmsgresp;
+ * 200 -- nesmsgnotify
+ * [result]
+ * 0     -- successful
+ */
+message GroupDownPacket{
+    required int32                result        = 1;        //0--successful, not 0--failed,
+
+    required uint32               payload       = 2;
+    optional string               reason        = 3;        //error reason
+    optional int32                sleep         = 4[default = 0]; // request client should sleep specified seconds before next request
+
+    repeated GroupNotify          newmsgnotify  = 5;
+    repeated GroupInfo            syncresp      = 6;
+    repeated GroupMessageResp     getmsgresp    = 7;
+}

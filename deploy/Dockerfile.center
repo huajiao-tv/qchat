@@ -1,0 +1,26 @@
+# build
+FROM golang:1.12
+
+COPY ./ /go/src/github.com/huajiao-tv/qchat
+
+WORKDIR /go/src/github.com/huajiao-tv/qchat/servers/center
+
+RUN GO111MODULE=auto go build \
+        -ldflags '-extldflags "-fno-PIC -static"'\
+        -buildmode pie
+        #-tags 'osusergo netgo static_build' \
+		#github.com/huajiao-tv/qchat/servers/center
+
+# image
+FROM alpine:3.9
+
+COPY --from=0 /go/src/github.com/huajiao-tv/qchat/servers/center/center /data/qchat/bin/center
+
+RUN mkdir -p /data/qchat/log/
+
+
+EXPOSE 80
+EXPOSE 6620
+EXPOSE 16600
+
+CMD ["sh", "-c", "/data/qchat/bin/center -n=${HOSTNAME}:16600 -d=${CLUSTER} -k=${KEEPER}"]

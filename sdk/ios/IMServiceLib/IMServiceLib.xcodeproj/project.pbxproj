@@ -1,0 +1,996 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		060A16911D73EBE600EF2794 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 060A16901D73EBE600EF2794 /* CoreTelephony.framework */; };
+		0637A2471D8105D2007D3721 /* RsaWorker.m in Sources */ = {isa = PBXBuildFile; fileRef = 0637A2461D8105D2007D3721 /* RsaWorker.m */; };
+		0690B3E71D38827000E9A6CD /* groupchat.pb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0690B3E51D38827000E9A6CD /* groupchat.pb.cpp */; };
+		5506D1031943557400532EE8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5506D1021943557400532EE8 /* Foundation.framework */; };
+		5506D12C194357CA00532EE8 /* IMUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5506D12B194357CA00532EE8 /* IMUser.m */; };
+		5506D13019435C8400532EE8 /* IMConfigData.m in Sources */ = {isa = PBXBuildFile; fileRef = 5506D12F19435C8400532EE8 /* IMConfigData.m */; };
+		552980041AD7F89B0035213D /* chatroom.pb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 552980021AD7F89B0035213D /* chatroom.pb.cpp */; };
+		5533497A195973C400A9AA25 /* IMMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 55334979195973C400A9AA25 /* IMMessage.m */; };
+		5533497F1959B2C000A9AA25 /* IMProtoHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5533497E1959B2C000A9AA25 /* IMProtoHelper.mm */; };
+		553349821959BE0C00A9AA25 /* IMFeatureBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 553349811959BE0C00A9AA25 /* IMFeatureBase.m */; };
+		553349AB195A4F7000A9AA25 /* IMFeaturePeerChat.m in Sources */ = {isa = PBXBuildFile; fileRef = 553349AA195A4F7000A9AA25 /* IMFeaturePeerChat.m */; };
+		553349D4195A56B800A9AA25 /* IMFeatureWebInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 553349D3195A56B800A9AA25 /* IMFeatureWebInterface.m */; };
+		553349D7195A56CF00A9AA25 /* IMFeatureUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 553349D6195A56CF00A9AA25 /* IMFeatureUserInfo.m */; };
+		553349DA195A570A00A9AA25 /* IMFeatureGroupChat.m in Sources */ = {isa = PBXBuildFile; fileRef = 553349D9195A570A00A9AA25 /* IMFeatureGroupChat.m */; };
+		553349DD195A571B00A9AA25 /* IMFeatureChatRoom.m in Sources */ = {isa = PBXBuildFile; fileRef = 553349DC195A571B00A9AA25 /* IMFeatureChatRoom.m */; };
+		553349E0195A573200A9AA25 /* IMFeatureCircleChat.m in Sources */ = {isa = PBXBuildFile; fileRef = 553349DF195A573200A9AA25 /* IMFeatureCircleChat.m */; };
+		553349E3195A574300A9AA25 /* IMFeatureRelation.m in Sources */ = {isa = PBXBuildFile; fileRef = 553349E2195A574300A9AA25 /* IMFeatureRelation.m */; };
+		5534500E1962BFD10081B1CE /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5534500D1962BFD10081B1CE /* SystemConfiguration.framework */; };
+		555F5B121965025200C71432 /* IMTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 555F5B111965025200C71432 /* IMTask.m */; };
+		5579B604195ADDD80007002B /* registry.pb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5579B602195ADDD80007002B /* registry.pb.cpp */; };
+		5579B748195C3A3E0007002B /* IMProtoRegistry.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5579B747195C3A3E0007002B /* IMProtoRegistry.mm */; };
+		5579B74B195C3AFF0007002B /* IMProtoChatRoom.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5579B74A195C3AFF0007002B /* IMProtoChatRoom.mm */; };
+		5579B74E195C3B3C0007002B /* IMProtoCircleChat.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5579B74D195C3B3C0007002B /* IMProtoCircleChat.mm */; };
+		5579B751195C3B640007002B /* IMProtoGroupChat.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5579B750195C3B640007002B /* IMProtoGroupChat.mm */; };
+		5579B754195C3B920007002B /* IMProtoMessage.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5579B753195C3B920007002B /* IMProtoMessage.mm */; };
+		5579B757195C3BBB0007002B /* IMProtoRelation.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5579B756195C3BBB0007002B /* IMProtoRelation.mm */; };
+		5579B75A195C3BE60007002B /* IMProtoServiceInner.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5579B759195C3BE60007002B /* IMProtoServiceInner.mm */; };
+		5579B75D195C3C170007002B /* IMProtoUserInfo.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5579B75C195C3C170007002B /* IMProtoUserInfo.mm */; };
+		5579B760195C3C3C0007002B /* IMProtoWeb.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5579B75F195C3C3C0007002B /* IMProtoWeb.mm */; };
+		558D1D9919590C120047ABA4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 558D1D9819590C120047ABA4 /* UIKit.framework */; };
+		558D1D9B19590C230047ABA4 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 558D1D9A19590C230047ABA4 /* CFNetwork.framework */; };
+		559733391945D5C90093FBDB /* address_book.pb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5597332F1945D5C90093FBDB /* address_book.pb.cpp */; };
+		55E43FC619669C1900E447DD /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E43FC519669C1900E447DD /* GCDAsyncSocket.m */; };
+		55FF9FEA1B9D86930082A2E8 /* privatechat.pb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55FF9FE81B9D86930082A2E8 /* privatechat.pb.cpp */; };
+		55FF9FEE1B9D86D50082A2E8 /* IMProtoPrivateChat.mm in Sources */ = {isa = PBXBuildFile; fileRef = 55FF9FED1B9D86D50082A2E8 /* IMProtoPrivateChat.mm */; };
+		55FF9FF11B9D87060082A2E8 /* IMFeaturePrivateChat.m in Sources */ = {isa = PBXBuildFile; fileRef = 55FF9FF01B9D87060082A2E8 /* IMFeaturePrivateChat.m */; };
+		6069D6B62315280B00FB3416 /* IMServerAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 6069D6B52315280B00FB3416 /* IMServerAddress.m */; };
+		C219091D1AD614B000CC9A76 /* flog.m in Sources */ = {isa = PBXBuildFile; fileRef = C219091C1AD614B000CC9A76 /* flog.m */; };
+		C223C208206C87E8009D5737 /* IM_Safe_cast.m in Sources */ = {isa = PBXBuildFile; fileRef = C223C207206C87E8009D5737 /* IM_Safe_cast.m */; };
+		C23732DC1ACCFE6C006068D8 /* ASIReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = C23732DB1ACCFE6C006068D8 /* ASIReachability.m */; };
+		C23CACD91AA6B109009BE711 /* IMServiceLib.m in Sources */ = {isa = PBXBuildFile; fileRef = C23CACD81AA6B109009BE711 /* IMServiceLib.m */; };
+		C23CACDC1AA6B120009BE711 /* IMUtil.mm in Sources */ = {isa = PBXBuildFile; fileRef = C23CACDB1AA6B120009BE711 /* IMUtil.mm */; };
+		C24EE3711A26CF9000007A10 /* descriptor.cc in Sources */ = {isa = PBXBuildFile; fileRef = C24EE2E31A26CF8F00007A10 /* descriptor.cc */; };
+		C24EE3721A26CF9000007A10 /* descriptor.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = C24EE2E51A26CF8F00007A10 /* descriptor.pb.cc */; };
+		C24EE3731A26CF9000007A10 /* descriptor_database.cc in Sources */ = {isa = PBXBuildFile; fileRef = C24EE2E81A26CF8F00007A10 /* descriptor_database.cc */; };
+		C24EE3741A26CF9000007A10 /* dynamic_message.cc in Sources */ = {isa = PBXBuildFile; fileRef = C24EE2EA1A26CF8F00007A10 /* dynamic_message.cc */; };
+		C24EE3751A26CF9000007A10 /* extension_set.cc in Sources */ = {isa = PBXBuildFile; fileRef = C24EE2EC1A26CF8F00007A10 /* extension_set.cc */; };
+		C24EE3761A26CF9000007A10 /* extension_set_heavy.cc in Sources */ = {isa = PBXBuildFile; fileRef = C24EE2EE1A26CF8F00007A10 /* extension_set_heavy.cc */; };
+		C24EE3771A26CF9000007A10 /* generated_message_reflection.cc in Sources */ = {isa = PBXBuildFile; fileRef = C24EE2F01A26CF8F00007A10 /* generated_message_reflection.cc */; };
+		C24EE3781A26CF9000007A10 /* generated_message_util.cc in Sources */ = {isa = PBXBuildFile; fileRef = C24EE2F21A26CF8F00007A10 /* generated_message_util.cc */; };
+		C24EE3791A26CF9000007A10 /* coded_stream.cc in Sources */ = {isa = PBXBuildFile; fileRef = C24EE2F51A26CF8F00007A10 /* coded_stream.cc */; };
+		C24EE37A1A26CF9000007A10 /* gzip_stream.cc in Sources */ = {isa = PBXBuildFile; fileRef = C24EE2F81A26CF8F00007A10 /* gzip_stream.cc */; };
+		C24EE37B1A26CF9000007A10 /* printer.cc in Sources */ = {isa = PBXBuildFile; fileRef = C24EE2FB1A26CF8F00007A10 /* printer.cc */; };
+		C24EE37C1A26CF9000007A10 /* strtod.cc in Sources */ = {isa = PBXBuildFile; fileRef = C24EE2FD1A26CF8F00007A10 /* strtod.cc */; };
+		C24EE37D1A26CF9000007A10 /* tokenizer.cc in Sources */ = {isa = PBXBuildFile; fileRef = C24EE2FF1A26CF8F00007A10 /* tokenizer.cc */; };
+		C24EE37E1A26CF9000007A10 /* zero_copy_stream.cc in Sources */ = {isa = PBXBuildFile; fileRef = C24EE3011A26CF8F00007A10 /* zero_copy_stream.cc */; };
+		C24EE37F1A26CF9000007A10 /* zero_copy_stream_impl.cc in Sources */ = {isa = PBXBuildFile; fileRef = C24EE3031A26CF8F00007A10 /* zero_copy_stream_impl.cc */; };
+		C24EE3801A26CF9000007A10 /* zero_copy_stream_impl_lite.cc in Sources */ = {isa = PBXBuildFile; fileRef = C24EE3051A26CF8F00007A10 /* zero_copy_stream_impl_lite.cc */; };
+		C24EE3811A26CF9000007A10 /* message.cc in Sources */ = {isa = PBXBuildFile; fileRef = C24EE3071A26CF8F00007A10 /* message.cc */; };
+		C24EE3821A26CF9000007A10 /* message_lite.cc in Sources */ = {isa = PBXBuildFile; fileRef = C24EE3091A26CF8F00007A10 /* message_lite.cc */; };
+		C24EE3831A26CF9000007A10 /* reflection_ops.cc in Sources */ = {isa = PBXBuildFile; fileRef = C24EE30C1A26CF8F00007A10 /* reflection_ops.cc */; };
+		C24EE3841A26CF9000007A10 /* repeated_field.cc in Sources */ = {isa = PBXBuildFile; fileRef = C24EE30E1A26CF8F00007A10 /* repeated_field.cc */; };
+		C24EE3851A26CF9000007A10 /* service.cc in Sources */ = {isa = PBXBuildFile; fileRef = C24EE3101A26CF8F00007A10 /* service.cc */; };
+		C24EE3861A26CF9000007A10 /* atomicops_internals_x86_gcc.cc in Sources */ = {isa = PBXBuildFile; fileRef = C24EE31D1A26CF9000007A10 /* atomicops_internals_x86_gcc.cc */; };
+		C24EE3871A26CF9000007A10 /* atomicops_internals_x86_msvc.cc in Sources */ = {isa = PBXBuildFile; fileRef = C24EE31F1A26CF9000007A10 /* atomicops_internals_x86_msvc.cc */; };
+		C24EE3881A26CF9000007A10 /* common.cc in Sources */ = {isa = PBXBuildFile; fileRef = C24EE3211A26CF9000007A10 /* common.cc */; };
+		C24EE3891A26CF9000007A10 /* once.cc in Sources */ = {isa = PBXBuildFile; fileRef = C24EE3251A26CF9000007A10 /* once.cc */; };
+		C24EE38A1A26CF9000007A10 /* stringprintf.cc in Sources */ = {isa = PBXBuildFile; fileRef = C24EE32A1A26CF9000007A10 /* stringprintf.cc */; };
+		C24EE38B1A26CF9000007A10 /* structurally_valid.cc in Sources */ = {isa = PBXBuildFile; fileRef = C24EE32C1A26CF9000007A10 /* structurally_valid.cc */; };
+		C24EE38C1A26CF9000007A10 /* strutil.cc in Sources */ = {isa = PBXBuildFile; fileRef = C24EE32D1A26CF9000007A10 /* strutil.cc */; };
+		C24EE38D1A26CF9000007A10 /* substitute.cc in Sources */ = {isa = PBXBuildFile; fileRef = C24EE32F1A26CF9000007A10 /* substitute.cc */; };
+		C24EE38E1A26CF9000007A10 /* file.cc in Sources */ = {isa = PBXBuildFile; fileRef = C24EE3391A26CF9000007A10 /* file.cc */; };
+		C24EE38F1A26CF9000007A10 /* googletest.cc in Sources */ = {isa = PBXBuildFile; fileRef = C24EE33B1A26CF9000007A10 /* googletest.cc */; };
+		C24EE3901A26CF9000007A10 /* zcgunzip.cc in Sources */ = {isa = PBXBuildFile; fileRef = C24EE33D1A26CF9000007A10 /* zcgunzip.cc */; };
+		C24EE3911A26CF9000007A10 /* zcgzip.cc in Sources */ = {isa = PBXBuildFile; fileRef = C24EE33E1A26CF9000007A10 /* zcgzip.cc */; };
+		C24EE3921A26CF9000007A10 /* text_format.cc in Sources */ = {isa = PBXBuildFile; fileRef = C24EE33F1A26CF9000007A10 /* text_format.cc */; };
+		C24EE3931A26CF9000007A10 /* unknown_field_set.cc in Sources */ = {isa = PBXBuildFile; fileRef = C24EE3411A26CF9000007A10 /* unknown_field_set.cc */; };
+		C24EE3941A26CF9000007A10 /* wire_format.cc in Sources */ = {isa = PBXBuildFile; fileRef = C24EE3431A26CF9000007A10 /* wire_format.cc */; };
+		C24EE3951A26CF9000007A10 /* wire_format_lite.cc in Sources */ = {isa = PBXBuildFile; fileRef = C24EE3451A26CF9000007A10 /* wire_format_lite.cc */; };
+		C2AD7B2F1A35E95F00F627CF /* vcproxy.pb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C2AD7B2D1A35E95F00F627CF /* vcproxy.pb.cpp */; };
+		C2AD7B331A35EA0B00F627CF /* IMFeatureRegistry.m in Sources */ = {isa = PBXBuildFile; fileRef = C2AD7B321A35EA0B00F627CF /* IMFeatureRegistry.m */; };
+		C2AD7BCA1A36A13D00F627CF /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = C2AD7BC11A36A13D00F627CF /* Base64.m */; };
+		C2AD7BCB1A36A13D00F627CF /* GZIP.m in Sources */ = {isa = PBXBuildFile; fileRef = C2AD7BC31A36A13D00F627CF /* GZIP.m */; };
+		C2AD7BCC1A36A13D00F627CF /* IMRC4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C2AD7BC41A36A13D00F627CF /* IMRC4.cpp */; };
+		C2AD7BCE1A36A13D00F627CF /* MD5Digest.m in Sources */ = {isa = PBXBuildFile; fileRef = C2AD7BC91A36A13D00F627CF /* MD5Digest.m */; };
+		C2AD7BD41A37E19D00F627CF /* IMProtoVoiceCallProxy.mm in Sources */ = {isa = PBXBuildFile; fileRef = C2AD7BD31A37E19D00F627CF /* IMProtoVoiceCallProxy.mm */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5506D0FD1943557400532EE8 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = "include/${PRODUCT_NAME}";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		060A16901D73EBE600EF2794 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		0637A2451D8105D2007D3721 /* RsaWorker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RsaWorker.h; path = util/RsaWorker.h; sourceTree = "<group>"; };
+		0637A2461D8105D2007D3721 /* RsaWorker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RsaWorker.m; path = util/RsaWorker.m; sourceTree = "<group>"; };
+		0690B3E41D38826500E9A6CD /* groupchat.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = groupchat.proto; sourceTree = "<group>"; };
+		0690B3E51D38827000E9A6CD /* groupchat.pb.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = groupchat.pb.cpp; sourceTree = "<group>"; };
+		0690B3E61D38827000E9A6CD /* groupchat.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = groupchat.pb.h; sourceTree = "<group>"; };
+		5506D0FF1943557400532EE8 /* libIMServiceLib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libIMServiceLib.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		5506D1021943557400532EE8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		5506D1061943557400532EE8 /* IMServiceLib-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IMServiceLib-Prefix.pch"; sourceTree = "<group>"; };
+		5506D12A194357CA00532EE8 /* IMUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMUser.h; sourceTree = "<group>"; };
+		5506D12B194357CA00532EE8 /* IMUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMUser.m; sourceTree = "<group>"; };
+		5506D12E19435C8400532EE8 /* IMConfigData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMConfigData.h; sourceTree = "<group>"; };
+		5506D12F19435C8400532EE8 /* IMConfigData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMConfigData.m; sourceTree = "<group>"; };
+		552980021AD7F89B0035213D /* chatroom.pb.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = chatroom.pb.cpp; sourceTree = "<group>"; };
+		552980031AD7F89B0035213D /* chatroom.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = chatroom.pb.h; sourceTree = "<group>"; };
+		552980051AD7F9300035213D /* chatroom.proto */ = {isa = PBXFileReference; lastKnownFileType = text; path = chatroom.proto; sourceTree = "<group>"; };
+		5533497419595E3F00A9AA25 /* IMNotifyDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMNotifyDelegate.h; sourceTree = "<group>"; };
+		55334978195973C400A9AA25 /* IMMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMMessage.h; sourceTree = "<group>"; };
+		55334979195973C400A9AA25 /* IMMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMMessage.m; sourceTree = "<group>"; };
+		5533497D1959B2C000A9AA25 /* IMProtoHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMProtoHelper.h; sourceTree = "<group>"; };
+		5533497E1959B2C000A9AA25 /* IMProtoHelper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IMProtoHelper.mm; sourceTree = "<group>"; };
+		553349801959BE0C00A9AA25 /* IMFeatureBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMFeatureBase.h; sourceTree = "<group>"; };
+		553349811959BE0C00A9AA25 /* IMFeatureBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMFeatureBase.m; sourceTree = "<group>"; };
+		553349A9195A4F7000A9AA25 /* IMFeaturePeerChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IMFeaturePeerChat.h; path = IMServiceLib/IMFeaturePeerChat.h; sourceTree = SOURCE_ROOT; };
+		553349AA195A4F7000A9AA25 /* IMFeaturePeerChat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IMFeaturePeerChat.m; path = IMServiceLib/IMFeaturePeerChat.m; sourceTree = SOURCE_ROOT; };
+		553349D2195A56B800A9AA25 /* IMFeatureWebInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMFeatureWebInterface.h; sourceTree = "<group>"; };
+		553349D3195A56B800A9AA25 /* IMFeatureWebInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMFeatureWebInterface.m; sourceTree = "<group>"; };
+		553349D5195A56CF00A9AA25 /* IMFeatureUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMFeatureUserInfo.h; sourceTree = "<group>"; };
+		553349D6195A56CF00A9AA25 /* IMFeatureUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMFeatureUserInfo.m; sourceTree = "<group>"; };
+		553349D8195A570A00A9AA25 /* IMFeatureGroupChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMFeatureGroupChat.h; sourceTree = "<group>"; };
+		553349D9195A570A00A9AA25 /* IMFeatureGroupChat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMFeatureGroupChat.m; sourceTree = "<group>"; };
+		553349DB195A571B00A9AA25 /* IMFeatureChatRoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMFeatureChatRoom.h; sourceTree = "<group>"; };
+		553349DC195A571B00A9AA25 /* IMFeatureChatRoom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMFeatureChatRoom.m; sourceTree = "<group>"; };
+		553349DE195A573200A9AA25 /* IMFeatureCircleChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMFeatureCircleChat.h; sourceTree = "<group>"; };
+		553349DF195A573200A9AA25 /* IMFeatureCircleChat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMFeatureCircleChat.m; sourceTree = "<group>"; };
+		553349E1195A574300A9AA25 /* IMFeatureRelation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMFeatureRelation.h; sourceTree = "<group>"; };
+		553349E2195A574300A9AA25 /* IMFeatureRelation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMFeatureRelation.m; sourceTree = "<group>"; };
+		553349E4195A620B00A9AA25 /* IMConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMConstant.h; sourceTree = "<group>"; };
+		5534500D1962BFD10081B1CE /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		555F5B101965025200C71432 /* IMTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMTask.h; sourceTree = "<group>"; };
+		555F5B111965025200C71432 /* IMTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMTask.m; sourceTree = "<group>"; };
+		5579B602195ADDD80007002B /* registry.pb.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = registry.pb.cpp; sourceTree = "<group>"; };
+		5579B603195ADDD80007002B /* registry.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = registry.pb.h; sourceTree = "<group>"; };
+		5579B642195AE98A0007002B /* address_book.proto */ = {isa = PBXFileReference; lastKnownFileType = text; path = address_book.proto; sourceTree = "<group>"; };
+		5579B643195AE98A0007002B /* registry.proto */ = {isa = PBXFileReference; lastKnownFileType = text; path = registry.proto; sourceTree = "<group>"; };
+		5579B738195BA0400007002B /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		5579B746195C3A3E0007002B /* IMProtoRegistry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMProtoRegistry.h; sourceTree = "<group>"; };
+		5579B747195C3A3E0007002B /* IMProtoRegistry.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IMProtoRegistry.mm; sourceTree = "<group>"; };
+		5579B749195C3AFF0007002B /* IMProtoChatRoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMProtoChatRoom.h; sourceTree = "<group>"; };
+		5579B74A195C3AFF0007002B /* IMProtoChatRoom.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IMProtoChatRoom.mm; sourceTree = "<group>"; };
+		5579B74C195C3B3C0007002B /* IMProtoCircleChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMProtoCircleChat.h; sourceTree = "<group>"; };
+		5579B74D195C3B3C0007002B /* IMProtoCircleChat.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IMProtoCircleChat.mm; sourceTree = "<group>"; };
+		5579B74F195C3B640007002B /* IMProtoGroupChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMProtoGroupChat.h; sourceTree = "<group>"; };
+		5579B750195C3B640007002B /* IMProtoGroupChat.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IMProtoGroupChat.mm; sourceTree = "<group>"; };
+		5579B752195C3B920007002B /* IMProtoMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMProtoMessage.h; sourceTree = "<group>"; };
+		5579B753195C3B920007002B /* IMProtoMessage.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IMProtoMessage.mm; sourceTree = "<group>"; };
+		5579B755195C3BBB0007002B /* IMProtoRelation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMProtoRelation.h; sourceTree = "<group>"; };
+		5579B756195C3BBB0007002B /* IMProtoRelation.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IMProtoRelation.mm; sourceTree = "<group>"; };
+		5579B758195C3BE60007002B /* IMProtoServiceInner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMProtoServiceInner.h; sourceTree = "<group>"; };
+		5579B759195C3BE60007002B /* IMProtoServiceInner.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IMProtoServiceInner.mm; sourceTree = "<group>"; };
+		5579B75B195C3C170007002B /* IMProtoUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMProtoUserInfo.h; sourceTree = "<group>"; };
+		5579B75C195C3C170007002B /* IMProtoUserInfo.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IMProtoUserInfo.mm; sourceTree = "<group>"; };
+		5579B75E195C3C3C0007002B /* IMProtoWeb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMProtoWeb.h; sourceTree = "<group>"; };
+		5579B75F195C3C3C0007002B /* IMProtoWeb.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IMProtoWeb.mm; sourceTree = "<group>"; };
+		558D1D9819590C120047ABA4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		558D1D9A19590C230047ABA4 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		5597332F1945D5C90093FBDB /* address_book.pb.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = address_book.pb.cpp; sourceTree = "<group>"; };
+		559733301945D5C90093FBDB /* address_book.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = address_book.pb.h; sourceTree = "<group>"; };
+		55E43FC419669C1900E447DD /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
+		55E43FC519669C1900E447DD /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
+		55FF9FE81B9D86930082A2E8 /* privatechat.pb.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = privatechat.pb.cpp; sourceTree = "<group>"; };
+		55FF9FE91B9D86930082A2E8 /* privatechat.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = privatechat.pb.h; sourceTree = "<group>"; };
+		55FF9FEB1B9D869E0082A2E8 /* privatechat.proto */ = {isa = PBXFileReference; lastKnownFileType = text; path = privatechat.proto; sourceTree = "<group>"; };
+		55FF9FEC1B9D86D50082A2E8 /* IMProtoPrivateChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMProtoPrivateChat.h; sourceTree = "<group>"; };
+		55FF9FED1B9D86D50082A2E8 /* IMProtoPrivateChat.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IMProtoPrivateChat.mm; sourceTree = "<group>"; };
+		55FF9FEF1B9D87060082A2E8 /* IMFeaturePrivateChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMFeaturePrivateChat.h; sourceTree = "<group>"; };
+		55FF9FF01B9D87060082A2E8 /* IMFeaturePrivateChat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMFeaturePrivateChat.m; sourceTree = "<group>"; };
+		6069D6B42315280B00FB3416 /* IMServerAddress.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMServerAddress.h; sourceTree = "<group>"; };
+		6069D6B52315280B00FB3416 /* IMServerAddress.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMServerAddress.m; sourceTree = "<group>"; };
+		C219091B1AD614B000CC9A76 /* flog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = flog.h; path = util/flog.h; sourceTree = "<group>"; };
+		C219091C1AD614B000CC9A76 /* flog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = flog.m; path = util/flog.m; sourceTree = "<group>"; };
+		C223C206206C87E8009D5737 /* IM_Safe_cast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IM_Safe_cast.h; sourceTree = "<group>"; };
+		C223C207206C87E8009D5737 /* IM_Safe_cast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IM_Safe_cast.m; sourceTree = "<group>"; };
+		C23732DA1ACCFE6C006068D8 /* ASIReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIReachability.h; sourceTree = "<group>"; };
+		C23732DB1ACCFE6C006068D8 /* ASIReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIReachability.m; sourceTree = "<group>"; };
+		C23CACD71AA6B109009BE711 /* IMServiceLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMServiceLib.h; sourceTree = "<group>"; };
+		C23CACD81AA6B109009BE711 /* IMServiceLib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMServiceLib.m; sourceTree = "<group>"; };
+		C23CACDA1AA6B120009BE711 /* IMUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMUtil.h; sourceTree = "<group>"; };
+		C23CACDB1AA6B120009BE711 /* IMUtil.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IMUtil.mm; sourceTree = "<group>"; };
+		C24EE2E31A26CF8F00007A10 /* descriptor.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = descriptor.cc; sourceTree = "<group>"; };
+		C24EE2E41A26CF8F00007A10 /* descriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = descriptor.h; sourceTree = "<group>"; };
+		C24EE2E51A26CF8F00007A10 /* descriptor.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = descriptor.pb.cc; sourceTree = "<group>"; };
+		C24EE2E61A26CF8F00007A10 /* descriptor.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = descriptor.pb.h; sourceTree = "<group>"; };
+		C24EE2E71A26CF8F00007A10 /* descriptor.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = descriptor.proto; sourceTree = "<group>"; };
+		C24EE2E81A26CF8F00007A10 /* descriptor_database.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = descriptor_database.cc; sourceTree = "<group>"; };
+		C24EE2E91A26CF8F00007A10 /* descriptor_database.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = descriptor_database.h; sourceTree = "<group>"; };
+		C24EE2EA1A26CF8F00007A10 /* dynamic_message.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dynamic_message.cc; sourceTree = "<group>"; };
+		C24EE2EB1A26CF8F00007A10 /* dynamic_message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dynamic_message.h; sourceTree = "<group>"; };
+		C24EE2EC1A26CF8F00007A10 /* extension_set.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = extension_set.cc; sourceTree = "<group>"; };
+		C24EE2ED1A26CF8F00007A10 /* extension_set.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = extension_set.h; sourceTree = "<group>"; };
+		C24EE2EE1A26CF8F00007A10 /* extension_set_heavy.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = extension_set_heavy.cc; sourceTree = "<group>"; };
+		C24EE2EF1A26CF8F00007A10 /* generated_enum_reflection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = generated_enum_reflection.h; sourceTree = "<group>"; };
+		C24EE2F01A26CF8F00007A10 /* generated_message_reflection.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = generated_message_reflection.cc; sourceTree = "<group>"; };
+		C24EE2F11A26CF8F00007A10 /* generated_message_reflection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = generated_message_reflection.h; sourceTree = "<group>"; };
+		C24EE2F21A26CF8F00007A10 /* generated_message_util.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = generated_message_util.cc; sourceTree = "<group>"; };
+		C24EE2F31A26CF8F00007A10 /* generated_message_util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = generated_message_util.h; sourceTree = "<group>"; };
+		C24EE2F51A26CF8F00007A10 /* coded_stream.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = coded_stream.cc; sourceTree = "<group>"; };
+		C24EE2F61A26CF8F00007A10 /* coded_stream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = coded_stream.h; sourceTree = "<group>"; };
+		C24EE2F71A26CF8F00007A10 /* coded_stream_inl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = coded_stream_inl.h; sourceTree = "<group>"; };
+		C24EE2F81A26CF8F00007A10 /* gzip_stream.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gzip_stream.cc; sourceTree = "<group>"; };
+		C24EE2F91A26CF8F00007A10 /* gzip_stream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gzip_stream.h; sourceTree = "<group>"; };
+		C24EE2FA1A26CF8F00007A10 /* package_info.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = package_info.h; sourceTree = "<group>"; };
+		C24EE2FB1A26CF8F00007A10 /* printer.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = printer.cc; sourceTree = "<group>"; };
+		C24EE2FC1A26CF8F00007A10 /* printer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = printer.h; sourceTree = "<group>"; };
+		C24EE2FD1A26CF8F00007A10 /* strtod.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = strtod.cc; sourceTree = "<group>"; };
+		C24EE2FE1A26CF8F00007A10 /* strtod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = strtod.h; sourceTree = "<group>"; };
+		C24EE2FF1A26CF8F00007A10 /* tokenizer.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tokenizer.cc; sourceTree = "<group>"; };
+		C24EE3001A26CF8F00007A10 /* tokenizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tokenizer.h; sourceTree = "<group>"; };
+		C24EE3011A26CF8F00007A10 /* zero_copy_stream.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = zero_copy_stream.cc; sourceTree = "<group>"; };
+		C24EE3021A26CF8F00007A10 /* zero_copy_stream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zero_copy_stream.h; sourceTree = "<group>"; };
+		C24EE3031A26CF8F00007A10 /* zero_copy_stream_impl.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = zero_copy_stream_impl.cc; sourceTree = "<group>"; };
+		C24EE3041A26CF8F00007A10 /* zero_copy_stream_impl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zero_copy_stream_impl.h; sourceTree = "<group>"; };
+		C24EE3051A26CF8F00007A10 /* zero_copy_stream_impl_lite.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = zero_copy_stream_impl_lite.cc; sourceTree = "<group>"; };
+		C24EE3061A26CF8F00007A10 /* zero_copy_stream_impl_lite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zero_copy_stream_impl_lite.h; sourceTree = "<group>"; };
+		C24EE3071A26CF8F00007A10 /* message.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = message.cc; sourceTree = "<group>"; };
+		C24EE3081A26CF8F00007A10 /* message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = message.h; sourceTree = "<group>"; };
+		C24EE3091A26CF8F00007A10 /* message_lite.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = message_lite.cc; sourceTree = "<group>"; };
+		C24EE30A1A26CF8F00007A10 /* message_lite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = message_lite.h; sourceTree = "<group>"; };
+		C24EE30B1A26CF8F00007A10 /* package_info.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = package_info.h; sourceTree = "<group>"; };
+		C24EE30C1A26CF8F00007A10 /* reflection_ops.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = reflection_ops.cc; sourceTree = "<group>"; };
+		C24EE30D1A26CF8F00007A10 /* reflection_ops.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = reflection_ops.h; sourceTree = "<group>"; };
+		C24EE30E1A26CF8F00007A10 /* repeated_field.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = repeated_field.cc; sourceTree = "<group>"; };
+		C24EE30F1A26CF8F00007A10 /* repeated_field.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = repeated_field.h; sourceTree = "<group>"; };
+		C24EE3101A26CF8F00007A10 /* service.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = service.cc; sourceTree = "<group>"; };
+		C24EE3111A26CF8F00007A10 /* service.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = service.h; sourceTree = "<group>"; };
+		C24EE3131A26CF8F00007A10 /* atomicops.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = atomicops.h; sourceTree = "<group>"; };
+		C24EE3141A26CF8F00007A10 /* atomicops_internals_arm64_gcc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = atomicops_internals_arm64_gcc.h; sourceTree = "<group>"; };
+		C24EE3151A26CF8F00007A10 /* atomicops_internals_arm_gcc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = atomicops_internals_arm_gcc.h; sourceTree = "<group>"; };
+		C24EE3161A26CF8F00007A10 /* atomicops_internals_arm_qnx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = atomicops_internals_arm_qnx.h; sourceTree = "<group>"; };
+		C24EE3171A26CF8F00007A10 /* atomicops_internals_atomicword_compat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = atomicops_internals_atomicword_compat.h; sourceTree = "<group>"; };
+		C24EE3181A26CF8F00007A10 /* atomicops_internals_generic_gcc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = atomicops_internals_generic_gcc.h; sourceTree = "<group>"; };
+		C24EE3191A26CF9000007A10 /* atomicops_internals_macosx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = atomicops_internals_macosx.h; sourceTree = "<group>"; };
+		C24EE31A1A26CF9000007A10 /* atomicops_internals_mips_gcc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = atomicops_internals_mips_gcc.h; sourceTree = "<group>"; };
+		C24EE31B1A26CF9000007A10 /* atomicops_internals_pnacl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = atomicops_internals_pnacl.h; sourceTree = "<group>"; };
+		C24EE31C1A26CF9000007A10 /* atomicops_internals_tsan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = atomicops_internals_tsan.h; sourceTree = "<group>"; };
+		C24EE31D1A26CF9000007A10 /* atomicops_internals_x86_gcc.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = atomicops_internals_x86_gcc.cc; sourceTree = "<group>"; };
+		C24EE31E1A26CF9000007A10 /* atomicops_internals_x86_gcc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = atomicops_internals_x86_gcc.h; sourceTree = "<group>"; };
+		C24EE31F1A26CF9000007A10 /* atomicops_internals_x86_msvc.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = atomicops_internals_x86_msvc.cc; sourceTree = "<group>"; };
+		C24EE3201A26CF9000007A10 /* atomicops_internals_x86_msvc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = atomicops_internals_x86_msvc.h; sourceTree = "<group>"; };
+		C24EE3211A26CF9000007A10 /* common.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = common.cc; sourceTree = "<group>"; };
+		C24EE3221A26CF9000007A10 /* common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
+		C24EE3231A26CF9000007A10 /* hash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hash.h; sourceTree = "<group>"; };
+		C24EE3241A26CF9000007A10 /* map_util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = map_util.h; sourceTree = "<group>"; };
+		C24EE3251A26CF9000007A10 /* once.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = once.cc; sourceTree = "<group>"; };
+		C24EE3261A26CF9000007A10 /* once.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = once.h; sourceTree = "<group>"; };
+		C24EE3271A26CF9000007A10 /* platform_macros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = platform_macros.h; sourceTree = "<group>"; };
+		C24EE3281A26CF9000007A10 /* shared_ptr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shared_ptr.h; sourceTree = "<group>"; };
+		C24EE3291A26CF9000007A10 /* stl_util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stl_util.h; sourceTree = "<group>"; };
+		C24EE32A1A26CF9000007A10 /* stringprintf.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = stringprintf.cc; sourceTree = "<group>"; };
+		C24EE32B1A26CF9000007A10 /* stringprintf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stringprintf.h; sourceTree = "<group>"; };
+		C24EE32C1A26CF9000007A10 /* structurally_valid.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = structurally_valid.cc; sourceTree = "<group>"; };
+		C24EE32D1A26CF9000007A10 /* strutil.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = strutil.cc; sourceTree = "<group>"; };
+		C24EE32E1A26CF9000007A10 /* strutil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = strutil.h; sourceTree = "<group>"; };
+		C24EE32F1A26CF9000007A10 /* substitute.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = substitute.cc; sourceTree = "<group>"; };
+		C24EE3301A26CF9000007A10 /* substitute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = substitute.h; sourceTree = "<group>"; };
+		C24EE3311A26CF9000007A10 /* template_util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = template_util.h; sourceTree = "<group>"; };
+		C24EE3321A26CF9000007A10 /* type_traits.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = type_traits.h; sourceTree = "<group>"; };
+		C24EE3341A26CF9000007A10 /* bad_utf8_string */ = {isa = PBXFileReference; lastKnownFileType = file; path = bad_utf8_string; sourceTree = "<group>"; };
+		C24EE3351A26CF9000007A10 /* golden_message */ = {isa = PBXFileReference; lastKnownFileType = file; path = golden_message; sourceTree = "<group>"; };
+		C24EE3361A26CF9000007A10 /* golden_message_oneof_implemented */ = {isa = PBXFileReference; lastKnownFileType = file; path = golden_message_oneof_implemented; sourceTree = "<group>"; };
+		C24EE3371A26CF9000007A10 /* golden_packed_fields_message */ = {isa = PBXFileReference; lastKnownFileType = file; path = golden_packed_fields_message; sourceTree = "<group>"; };
+		C24EE3391A26CF9000007A10 /* file.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = file.cc; sourceTree = "<group>"; };
+		C24EE33A1A26CF9000007A10 /* file.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = file.h; sourceTree = "<group>"; };
+		C24EE33B1A26CF9000007A10 /* googletest.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = googletest.cc; sourceTree = "<group>"; };
+		C24EE33C1A26CF9000007A10 /* googletest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = googletest.h; sourceTree = "<group>"; };
+		C24EE33D1A26CF9000007A10 /* zcgunzip.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = zcgunzip.cc; sourceTree = "<group>"; };
+		C24EE33E1A26CF9000007A10 /* zcgzip.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = zcgzip.cc; sourceTree = "<group>"; };
+		C24EE33F1A26CF9000007A10 /* text_format.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = text_format.cc; sourceTree = "<group>"; };
+		C24EE3401A26CF9000007A10 /* text_format.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = text_format.h; sourceTree = "<group>"; };
+		C24EE3411A26CF9000007A10 /* unknown_field_set.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = unknown_field_set.cc; sourceTree = "<group>"; };
+		C24EE3421A26CF9000007A10 /* unknown_field_set.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unknown_field_set.h; sourceTree = "<group>"; };
+		C24EE3431A26CF9000007A10 /* wire_format.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wire_format.cc; sourceTree = "<group>"; };
+		C24EE3441A26CF9000007A10 /* wire_format.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wire_format.h; sourceTree = "<group>"; };
+		C24EE3451A26CF9000007A10 /* wire_format_lite.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wire_format_lite.cc; sourceTree = "<group>"; };
+		C24EE3461A26CF9000007A10 /* wire_format_lite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wire_format_lite.h; sourceTree = "<group>"; };
+		C24EE3471A26CF9000007A10 /* wire_format_lite_inl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wire_format_lite_inl.h; sourceTree = "<group>"; };
+		C24EE3961A26D06D00007A10 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = config.h; path = "IMServiceLib/proto/protobuf-2.6.0/config.h"; sourceTree = SOURCE_ROOT; };
+		C2AD7B2D1A35E95F00F627CF /* vcproxy.pb.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = vcproxy.pb.cpp; sourceTree = "<group>"; };
+		C2AD7B2E1A35E95F00F627CF /* vcproxy.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vcproxy.pb.h; sourceTree = "<group>"; };
+		C2AD7B301A35E96500F627CF /* vcproxy.proto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vcproxy.proto; sourceTree = "<group>"; };
+		C2AD7B311A35EA0B00F627CF /* IMFeatureRegistry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMFeatureRegistry.h; sourceTree = "<group>"; };
+		C2AD7B321A35EA0B00F627CF /* IMFeatureRegistry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMFeatureRegistry.m; sourceTree = "<group>"; };
+		C2AD7BC01A36A13D00F627CF /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Base64.h; path = util/Base64.h; sourceTree = "<group>"; };
+		C2AD7BC11A36A13D00F627CF /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Base64.m; path = util/Base64.m; sourceTree = "<group>"; };
+		C2AD7BC21A36A13D00F627CF /* GZIP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GZIP.h; path = util/GZIP.h; sourceTree = "<group>"; };
+		C2AD7BC31A36A13D00F627CF /* GZIP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GZIP.m; path = util/GZIP.m; sourceTree = "<group>"; };
+		C2AD7BC41A36A13D00F627CF /* IMRC4.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IMRC4.cpp; path = util/IMRC4.cpp; sourceTree = "<group>"; };
+		C2AD7BC51A36A13D00F627CF /* IMRC4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IMRC4.h; path = util/IMRC4.h; sourceTree = "<group>"; };
+		C2AD7BC81A36A13D00F627CF /* MD5Digest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MD5Digest.h; path = util/MD5Digest.h; sourceTree = "<group>"; };
+		C2AD7BC91A36A13D00F627CF /* MD5Digest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MD5Digest.m; path = util/MD5Digest.m; sourceTree = "<group>"; };
+		C2AD7BD21A37E19D00F627CF /* IMProtoVoiceCallProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMProtoVoiceCallProxy.h; sourceTree = "<group>"; };
+		C2AD7BD31A37E19D00F627CF /* IMProtoVoiceCallProxy.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IMProtoVoiceCallProxy.mm; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5506D0FC1943557400532EE8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				060A16911D73EBE600EF2794 /* CoreTelephony.framework in Frameworks */,
+				5534500E1962BFD10081B1CE /* SystemConfiguration.framework in Frameworks */,
+				558D1D9B19590C230047ABA4 /* CFNetwork.framework in Frameworks */,
+				558D1D9919590C120047ABA4 /* UIKit.framework in Frameworks */,
+				5506D1031943557400532EE8 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5506D0F61943557400532EE8 = {
+			isa = PBXGroup;
+			children = (
+				5506D1011943557400532EE8 /* Frameworks */,
+				5506D1041943557400532EE8 /* IMServiceLib */,
+				5506D1001943557400532EE8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5506D1001943557400532EE8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5506D0FF1943557400532EE8 /* libIMServiceLib.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5506D1011943557400532EE8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				060A16901D73EBE600EF2794 /* CoreTelephony.framework */,
+				5534500D1962BFD10081B1CE /* SystemConfiguration.framework */,
+				5579B738195BA0400007002B /* libz.dylib */,
+				558D1D9A19590C230047ABA4 /* CFNetwork.framework */,
+				558D1D9819590C120047ABA4 /* UIKit.framework */,
+				5506D1021943557400532EE8 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5506D1041943557400532EE8 /* IMServiceLib */ = {
+			isa = PBXGroup;
+			children = (
+				5579BC6B195D39240007002B /* util */,
+				553349C8195A55C300A9AA25 /* feature */,
+				553349C7195A556D00A9AA25 /* protohelper */,
+				553349511959400D00A9AA25 /* asihttp */,
+				5506D12E19435C8400532EE8 /* IMConfigData.h */,
+				5506D12F19435C8400532EE8 /* IMConfigData.m */,
+				55334978195973C400A9AA25 /* IMMessage.h */,
+				55334979195973C400A9AA25 /* IMMessage.m */,
+				5533497419595E3F00A9AA25 /* IMNotifyDelegate.h */,
+				C23CACD71AA6B109009BE711 /* IMServiceLib.h */,
+				C23CACD81AA6B109009BE711 /* IMServiceLib.m */,
+				5506D12A194357CA00532EE8 /* IMUser.h */,
+				5506D12B194357CA00532EE8 /* IMUser.m */,
+				5597332E1945D5C90093FBDB /* proto */,
+				553349421959377300A9AA25 /* socket */,
+				5506D1051943557400532EE8 /* Supporting Files */,
+				553349E4195A620B00A9AA25 /* IMConstant.h */,
+				555F5B101965025200C71432 /* IMTask.h */,
+				555F5B111965025200C71432 /* IMTask.m */,
+				6069D6B42315280B00FB3416 /* IMServerAddress.h */,
+				6069D6B52315280B00FB3416 /* IMServerAddress.m */,
+			);
+			path = IMServiceLib;
+			sourceTree = "<group>";
+		};
+		5506D1051943557400532EE8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5506D1061943557400532EE8 /* IMServiceLib-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		553349421959377300A9AA25 /* socket */ = {
+			isa = PBXGroup;
+			children = (
+				55E43FC419669C1900E447DD /* GCDAsyncSocket.h */,
+				55E43FC519669C1900E447DD /* GCDAsyncSocket.m */,
+			);
+			path = socket;
+			sourceTree = "<group>";
+		};
+		553349511959400D00A9AA25 /* asihttp */ = {
+			isa = PBXGroup;
+			children = (
+				C23732DA1ACCFE6C006068D8 /* ASIReachability.h */,
+				C23732DB1ACCFE6C006068D8 /* ASIReachability.m */,
+			);
+			path = asihttp;
+			sourceTree = "<group>";
+		};
+		553349C7195A556D00A9AA25 /* protohelper */ = {
+			isa = PBXGroup;
+			children = (
+				55FF9FEC1B9D86D50082A2E8 /* IMProtoPrivateChat.h */,
+				55FF9FED1B9D86D50082A2E8 /* IMProtoPrivateChat.mm */,
+				5533497E1959B2C000A9AA25 /* IMProtoHelper.mm */,
+				5533497D1959B2C000A9AA25 /* IMProtoHelper.h */,
+				C2AD7BD21A37E19D00F627CF /* IMProtoVoiceCallProxy.h */,
+				C2AD7BD31A37E19D00F627CF /* IMProtoVoiceCallProxy.mm */,
+				5579B752195C3B920007002B /* IMProtoMessage.h */,
+				5579B753195C3B920007002B /* IMProtoMessage.mm */,
+				5579B75B195C3C170007002B /* IMProtoUserInfo.h */,
+				5579B75C195C3C170007002B /* IMProtoUserInfo.mm */,
+				5579B74F195C3B640007002B /* IMProtoGroupChat.h */,
+				5579B750195C3B640007002B /* IMProtoGroupChat.mm */,
+				5579B75E195C3C3C0007002B /* IMProtoWeb.h */,
+				5579B75F195C3C3C0007002B /* IMProtoWeb.mm */,
+				5579B746195C3A3E0007002B /* IMProtoRegistry.h */,
+				5579B747195C3A3E0007002B /* IMProtoRegistry.mm */,
+				5579B749195C3AFF0007002B /* IMProtoChatRoom.h */,
+				5579B74A195C3AFF0007002B /* IMProtoChatRoom.mm */,
+				5579B74C195C3B3C0007002B /* IMProtoCircleChat.h */,
+				5579B74D195C3B3C0007002B /* IMProtoCircleChat.mm */,
+				5579B755195C3BBB0007002B /* IMProtoRelation.h */,
+				5579B756195C3BBB0007002B /* IMProtoRelation.mm */,
+				5579B758195C3BE60007002B /* IMProtoServiceInner.h */,
+				5579B759195C3BE60007002B /* IMProtoServiceInner.mm */,
+			);
+			name = protohelper;
+			sourceTree = "<group>";
+		};
+		553349C8195A55C300A9AA25 /* feature */ = {
+			isa = PBXGroup;
+			children = (
+				55FF9FEF1B9D87060082A2E8 /* IMFeaturePrivateChat.h */,
+				55FF9FF01B9D87060082A2E8 /* IMFeaturePrivateChat.m */,
+				553349A9195A4F7000A9AA25 /* IMFeaturePeerChat.h */,
+				553349AA195A4F7000A9AA25 /* IMFeaturePeerChat.m */,
+				C2AD7B311A35EA0B00F627CF /* IMFeatureRegistry.h */,
+				C2AD7B321A35EA0B00F627CF /* IMFeatureRegistry.m */,
+				553349801959BE0C00A9AA25 /* IMFeatureBase.h */,
+				553349811959BE0C00A9AA25 /* IMFeatureBase.m */,
+				553349D2195A56B800A9AA25 /* IMFeatureWebInterface.h */,
+				553349D3195A56B800A9AA25 /* IMFeatureWebInterface.m */,
+				553349D5195A56CF00A9AA25 /* IMFeatureUserInfo.h */,
+				553349D6195A56CF00A9AA25 /* IMFeatureUserInfo.m */,
+				553349D8195A570A00A9AA25 /* IMFeatureGroupChat.h */,
+				553349D9195A570A00A9AA25 /* IMFeatureGroupChat.m */,
+				553349DC195A571B00A9AA25 /* IMFeatureChatRoom.m */,
+				553349DB195A571B00A9AA25 /* IMFeatureChatRoom.h */,
+				553349DE195A573200A9AA25 /* IMFeatureCircleChat.h */,
+				553349DF195A573200A9AA25 /* IMFeatureCircleChat.m */,
+				553349E1195A574300A9AA25 /* IMFeatureRelation.h */,
+				553349E2195A574300A9AA25 /* IMFeatureRelation.m */,
+			);
+			name = feature;
+			sourceTree = "<group>";
+		};
+		5579B641195AE98A0007002B /* protofiles */ = {
+			isa = PBXGroup;
+			children = (
+				0690B3E41D38826500E9A6CD /* groupchat.proto */,
+				55FF9FEB1B9D869E0082A2E8 /* privatechat.proto */,
+				552980051AD7F9300035213D /* chatroom.proto */,
+				C2AD7B301A35E96500F627CF /* vcproxy.proto */,
+				5579B642195AE98A0007002B /* address_book.proto */,
+				5579B643195AE98A0007002B /* registry.proto */,
+			);
+			path = protofiles;
+			sourceTree = "<group>";
+		};
+		5579BC6B195D39240007002B /* util */ = {
+			isa = PBXGroup;
+			children = (
+				C223C206206C87E8009D5737 /* IM_Safe_cast.h */,
+				C223C207206C87E8009D5737 /* IM_Safe_cast.m */,
+				0637A2451D8105D2007D3721 /* RsaWorker.h */,
+				0637A2461D8105D2007D3721 /* RsaWorker.m */,
+				C2AD7BC01A36A13D00F627CF /* Base64.h */,
+				C2AD7BC11A36A13D00F627CF /* Base64.m */,
+				C2AD7BC21A36A13D00F627CF /* GZIP.h */,
+				C2AD7BC31A36A13D00F627CF /* GZIP.m */,
+				C2AD7BC51A36A13D00F627CF /* IMRC4.h */,
+				C2AD7BC41A36A13D00F627CF /* IMRC4.cpp */,
+				C23CACDA1AA6B120009BE711 /* IMUtil.h */,
+				C23CACDB1AA6B120009BE711 /* IMUtil.mm */,
+				C219091B1AD614B000CC9A76 /* flog.h */,
+				C219091C1AD614B000CC9A76 /* flog.m */,
+				C2AD7BC81A36A13D00F627CF /* MD5Digest.h */,
+				C2AD7BC91A36A13D00F627CF /* MD5Digest.m */,
+			);
+			name = util;
+			sourceTree = "<group>";
+		};
+		5597332E1945D5C90093FBDB /* proto */ = {
+			isa = PBXGroup;
+			children = (
+				0690B3E51D38827000E9A6CD /* groupchat.pb.cpp */,
+				0690B3E61D38827000E9A6CD /* groupchat.pb.h */,
+				55FF9FE81B9D86930082A2E8 /* privatechat.pb.cpp */,
+				55FF9FE91B9D86930082A2E8 /* privatechat.pb.h */,
+				552980021AD7F89B0035213D /* chatroom.pb.cpp */,
+				552980031AD7F89B0035213D /* chatroom.pb.h */,
+				C24EE2891A26CF8F00007A10 /* google */,
+				5579B641195AE98A0007002B /* protofiles */,
+				5579B602195ADDD80007002B /* registry.pb.cpp */,
+				5579B603195ADDD80007002B /* registry.pb.h */,
+				C2AD7B2D1A35E95F00F627CF /* vcproxy.pb.cpp */,
+				C2AD7B2E1A35E95F00F627CF /* vcproxy.pb.h */,
+				5597332F1945D5C90093FBDB /* address_book.pb.cpp */,
+				559733301945D5C90093FBDB /* address_book.pb.h */,
+			);
+			path = proto;
+			sourceTree = "<group>";
+		};
+		C24EE2891A26CF8F00007A10 /* google */ = {
+			isa = PBXGroup;
+			children = (
+				C24EE28A1A26CF8F00007A10 /* protobuf */,
+				C24EE3961A26D06D00007A10 /* config.h */,
+			);
+			name = google;
+			path = "protobuf-2.6.0/src/google";
+			sourceTree = "<group>";
+		};
+		C24EE28A1A26CF8F00007A10 /* protobuf */ = {
+			isa = PBXGroup;
+			children = (
+				C24EE2E31A26CF8F00007A10 /* descriptor.cc */,
+				C24EE2E41A26CF8F00007A10 /* descriptor.h */,
+				C24EE2E51A26CF8F00007A10 /* descriptor.pb.cc */,
+				C24EE2E61A26CF8F00007A10 /* descriptor.pb.h */,
+				C24EE2E71A26CF8F00007A10 /* descriptor.proto */,
+				C24EE2E81A26CF8F00007A10 /* descriptor_database.cc */,
+				C24EE2E91A26CF8F00007A10 /* descriptor_database.h */,
+				C24EE2EA1A26CF8F00007A10 /* dynamic_message.cc */,
+				C24EE2EB1A26CF8F00007A10 /* dynamic_message.h */,
+				C24EE2EC1A26CF8F00007A10 /* extension_set.cc */,
+				C24EE2ED1A26CF8F00007A10 /* extension_set.h */,
+				C24EE2EE1A26CF8F00007A10 /* extension_set_heavy.cc */,
+				C24EE2EF1A26CF8F00007A10 /* generated_enum_reflection.h */,
+				C24EE2F01A26CF8F00007A10 /* generated_message_reflection.cc */,
+				C24EE2F11A26CF8F00007A10 /* generated_message_reflection.h */,
+				C24EE2F21A26CF8F00007A10 /* generated_message_util.cc */,
+				C24EE2F31A26CF8F00007A10 /* generated_message_util.h */,
+				C24EE2F41A26CF8F00007A10 /* io */,
+				C24EE3071A26CF8F00007A10 /* message.cc */,
+				C24EE3081A26CF8F00007A10 /* message.h */,
+				C24EE3091A26CF8F00007A10 /* message_lite.cc */,
+				C24EE30A1A26CF8F00007A10 /* message_lite.h */,
+				C24EE30B1A26CF8F00007A10 /* package_info.h */,
+				C24EE30C1A26CF8F00007A10 /* reflection_ops.cc */,
+				C24EE30D1A26CF8F00007A10 /* reflection_ops.h */,
+				C24EE30E1A26CF8F00007A10 /* repeated_field.cc */,
+				C24EE30F1A26CF8F00007A10 /* repeated_field.h */,
+				C24EE3101A26CF8F00007A10 /* service.cc */,
+				C24EE3111A26CF8F00007A10 /* service.h */,
+				C24EE3121A26CF8F00007A10 /* stubs */,
+				C24EE3331A26CF9000007A10 /* testdata */,
+				C24EE3381A26CF9000007A10 /* testing */,
+				C24EE33F1A26CF9000007A10 /* text_format.cc */,
+				C24EE3401A26CF9000007A10 /* text_format.h */,
+				C24EE3411A26CF9000007A10 /* unknown_field_set.cc */,
+				C24EE3421A26CF9000007A10 /* unknown_field_set.h */,
+				C24EE3431A26CF9000007A10 /* wire_format.cc */,
+				C24EE3441A26CF9000007A10 /* wire_format.h */,
+				C24EE3451A26CF9000007A10 /* wire_format_lite.cc */,
+				C24EE3461A26CF9000007A10 /* wire_format_lite.h */,
+				C24EE3471A26CF9000007A10 /* wire_format_lite_inl.h */,
+			);
+			path = protobuf;
+			sourceTree = "<group>";
+		};
+		C24EE2F41A26CF8F00007A10 /* io */ = {
+			isa = PBXGroup;
+			children = (
+				C24EE2F51A26CF8F00007A10 /* coded_stream.cc */,
+				C24EE2F61A26CF8F00007A10 /* coded_stream.h */,
+				C24EE2F71A26CF8F00007A10 /* coded_stream_inl.h */,
+				C24EE2F81A26CF8F00007A10 /* gzip_stream.cc */,
+				C24EE2F91A26CF8F00007A10 /* gzip_stream.h */,
+				C24EE2FA1A26CF8F00007A10 /* package_info.h */,
+				C24EE2FB1A26CF8F00007A10 /* printer.cc */,
+				C24EE2FC1A26CF8F00007A10 /* printer.h */,
+				C24EE2FD1A26CF8F00007A10 /* strtod.cc */,
+				C24EE2FE1A26CF8F00007A10 /* strtod.h */,
+				C24EE2FF1A26CF8F00007A10 /* tokenizer.cc */,
+				C24EE3001A26CF8F00007A10 /* tokenizer.h */,
+				C24EE3011A26CF8F00007A10 /* zero_copy_stream.cc */,
+				C24EE3021A26CF8F00007A10 /* zero_copy_stream.h */,
+				C24EE3031A26CF8F00007A10 /* zero_copy_stream_impl.cc */,
+				C24EE3041A26CF8F00007A10 /* zero_copy_stream_impl.h */,
+				C24EE3051A26CF8F00007A10 /* zero_copy_stream_impl_lite.cc */,
+				C24EE3061A26CF8F00007A10 /* zero_copy_stream_impl_lite.h */,
+			);
+			path = io;
+			sourceTree = "<group>";
+		};
+		C24EE3121A26CF8F00007A10 /* stubs */ = {
+			isa = PBXGroup;
+			children = (
+				C24EE3131A26CF8F00007A10 /* atomicops.h */,
+				C24EE3141A26CF8F00007A10 /* atomicops_internals_arm64_gcc.h */,
+				C24EE3151A26CF8F00007A10 /* atomicops_internals_arm_gcc.h */,
+				C24EE3161A26CF8F00007A10 /* atomicops_internals_arm_qnx.h */,
+				C24EE3171A26CF8F00007A10 /* atomicops_internals_atomicword_compat.h */,
+				C24EE3181A26CF8F00007A10 /* atomicops_internals_generic_gcc.h */,
+				C24EE3191A26CF9000007A10 /* atomicops_internals_macosx.h */,
+				C24EE31A1A26CF9000007A10 /* atomicops_internals_mips_gcc.h */,
+				C24EE31B1A26CF9000007A10 /* atomicops_internals_pnacl.h */,
+				C24EE31C1A26CF9000007A10 /* atomicops_internals_tsan.h */,
+				C24EE31D1A26CF9000007A10 /* atomicops_internals_x86_gcc.cc */,
+				C24EE31E1A26CF9000007A10 /* atomicops_internals_x86_gcc.h */,
+				C24EE31F1A26CF9000007A10 /* atomicops_internals_x86_msvc.cc */,
+				C24EE3201A26CF9000007A10 /* atomicops_internals_x86_msvc.h */,
+				C24EE3211A26CF9000007A10 /* common.cc */,
+				C24EE3221A26CF9000007A10 /* common.h */,
+				C24EE3231A26CF9000007A10 /* hash.h */,
+				C24EE3241A26CF9000007A10 /* map_util.h */,
+				C24EE3251A26CF9000007A10 /* once.cc */,
+				C24EE3261A26CF9000007A10 /* once.h */,
+				C24EE3271A26CF9000007A10 /* platform_macros.h */,
+				C24EE3281A26CF9000007A10 /* shared_ptr.h */,
+				C24EE3291A26CF9000007A10 /* stl_util.h */,
+				C24EE32A1A26CF9000007A10 /* stringprintf.cc */,
+				C24EE32B1A26CF9000007A10 /* stringprintf.h */,
+				C24EE32C1A26CF9000007A10 /* structurally_valid.cc */,
+				C24EE32D1A26CF9000007A10 /* strutil.cc */,
+				C24EE32E1A26CF9000007A10 /* strutil.h */,
+				C24EE32F1A26CF9000007A10 /* substitute.cc */,
+				C24EE3301A26CF9000007A10 /* substitute.h */,
+				C24EE3311A26CF9000007A10 /* template_util.h */,
+				C24EE3321A26CF9000007A10 /* type_traits.h */,
+			);
+			path = stubs;
+			sourceTree = "<group>";
+		};
+		C24EE3331A26CF9000007A10 /* testdata */ = {
+			isa = PBXGroup;
+			children = (
+				C24EE3341A26CF9000007A10 /* bad_utf8_string */,
+				C24EE3351A26CF9000007A10 /* golden_message */,
+				C24EE3361A26CF9000007A10 /* golden_message_oneof_implemented */,
+				C24EE3371A26CF9000007A10 /* golden_packed_fields_message */,
+			);
+			path = testdata;
+			sourceTree = "<group>";
+		};
+		C24EE3381A26CF9000007A10 /* testing */ = {
+			isa = PBXGroup;
+			children = (
+				C24EE3391A26CF9000007A10 /* file.cc */,
+				C24EE33A1A26CF9000007A10 /* file.h */,
+				C24EE33B1A26CF9000007A10 /* googletest.cc */,
+				C24EE33C1A26CF9000007A10 /* googletest.h */,
+				C24EE33D1A26CF9000007A10 /* zcgunzip.cc */,
+				C24EE33E1A26CF9000007A10 /* zcgzip.cc */,
+			);
+			path = testing;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5506D0FE1943557400532EE8 /* IMServiceLib */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5506D1241943557400532EE8 /* Build configuration list for PBXNativeTarget "IMServiceLib" */;
+			buildPhases = (
+				5506D0FB1943557400532EE8 /* Sources */,
+				5506D0FC1943557400532EE8 /* Frameworks */,
+				5506D0FD1943557400532EE8 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = IMServiceLib;
+			productName = IMServiceLib;
+			productReference = 5506D0FF1943557400532EE8 /* libIMServiceLib.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5506D0F71943557400532EE8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0930;
+				ORGANIZATIONNAME = qihoo;
+			};
+			buildConfigurationList = 5506D0FA1943557400532EE8 /* Build configuration list for PBXProject "IMServiceLib" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				English,
+				en,
+			);
+			mainGroup = 5506D0F61943557400532EE8;
+			productRefGroup = 5506D1001943557400532EE8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5506D0FE1943557400532EE8 /* IMServiceLib */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5506D0FB1943557400532EE8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C24EE3931A26CF9000007A10 /* unknown_field_set.cc in Sources */,
+				553349E0195A573200A9AA25 /* IMFeatureCircleChat.m in Sources */,
+				5579B748195C3A3E0007002B /* IMProtoRegistry.mm in Sources */,
+				5579B75A195C3BE60007002B /* IMProtoServiceInner.mm in Sources */,
+				C23732DC1ACCFE6C006068D8 /* ASIReachability.m in Sources */,
+				C24EE3881A26CF9000007A10 /* common.cc in Sources */,
+				555F5B121965025200C71432 /* IMTask.m in Sources */,
+				C223C208206C87E8009D5737 /* IM_Safe_cast.m in Sources */,
+				C24EE3901A26CF9000007A10 /* zcgunzip.cc in Sources */,
+				C24EE38D1A26CF9000007A10 /* substitute.cc in Sources */,
+				C24EE3721A26CF9000007A10 /* descriptor.pb.cc in Sources */,
+				55FF9FEE1B9D86D50082A2E8 /* IMProtoPrivateChat.mm in Sources */,
+				C24EE3761A26CF9000007A10 /* extension_set_heavy.cc in Sources */,
+				553349D4195A56B800A9AA25 /* IMFeatureWebInterface.m in Sources */,
+				C24EE3871A26CF9000007A10 /* atomicops_internals_x86_msvc.cc in Sources */,
+				553349D7195A56CF00A9AA25 /* IMFeatureUserInfo.m in Sources */,
+				5579B604195ADDD80007002B /* registry.pb.cpp in Sources */,
+				C24EE3861A26CF9000007A10 /* atomicops_internals_x86_gcc.cc in Sources */,
+				5579B754195C3B920007002B /* IMProtoMessage.mm in Sources */,
+				5579B75D195C3C170007002B /* IMProtoUserInfo.mm in Sources */,
+				C24EE3711A26CF9000007A10 /* descriptor.cc in Sources */,
+				C2AD7BCB1A36A13D00F627CF /* GZIP.m in Sources */,
+				55FF9FF11B9D87060082A2E8 /* IMFeaturePrivateChat.m in Sources */,
+				C2AD7BCA1A36A13D00F627CF /* Base64.m in Sources */,
+				C24EE37A1A26CF9000007A10 /* gzip_stream.cc in Sources */,
+				C24EE3851A26CF9000007A10 /* service.cc in Sources */,
+				C24EE38E1A26CF9000007A10 /* file.cc in Sources */,
+				5533497A195973C400A9AA25 /* IMMessage.m in Sources */,
+				553349AB195A4F7000A9AA25 /* IMFeaturePeerChat.m in Sources */,
+				5579B751195C3B640007002B /* IMProtoGroupChat.mm in Sources */,
+				5579B757195C3BBB0007002B /* IMProtoRelation.mm in Sources */,
+				553349821959BE0C00A9AA25 /* IMFeatureBase.m in Sources */,
+				5579B760195C3C3C0007002B /* IMProtoWeb.mm in Sources */,
+				55E43FC619669C1900E447DD /* GCDAsyncSocket.m in Sources */,
+				55FF9FEA1B9D86930082A2E8 /* privatechat.pb.cpp in Sources */,
+				C2AD7BCC1A36A13D00F627CF /* IMRC4.cpp in Sources */,
+				C24EE3771A26CF9000007A10 /* generated_message_reflection.cc in Sources */,
+				C24EE37F1A26CF9000007A10 /* zero_copy_stream_impl.cc in Sources */,
+				C219091D1AD614B000CC9A76 /* flog.m in Sources */,
+				0690B3E71D38827000E9A6CD /* groupchat.pb.cpp in Sources */,
+				C24EE38C1A26CF9000007A10 /* strutil.cc in Sources */,
+				5533497F1959B2C000A9AA25 /* IMProtoHelper.mm in Sources */,
+				0637A2471D8105D2007D3721 /* RsaWorker.m in Sources */,
+				553349E3195A574300A9AA25 /* IMFeatureRelation.m in Sources */,
+				C24EE38A1A26CF9000007A10 /* stringprintf.cc in Sources */,
+				C2AD7BCE1A36A13D00F627CF /* MD5Digest.m in Sources */,
+				C24EE38B1A26CF9000007A10 /* structurally_valid.cc in Sources */,
+				C24EE3831A26CF9000007A10 /* reflection_ops.cc in Sources */,
+				5579B74E195C3B3C0007002B /* IMProtoCircleChat.mm in Sources */,
+				C24EE3821A26CF9000007A10 /* message_lite.cc in Sources */,
+				553349DD195A571B00A9AA25 /* IMFeatureChatRoom.m in Sources */,
+				C24EE37E1A26CF9000007A10 /* zero_copy_stream.cc in Sources */,
+				C24EE3951A26CF9000007A10 /* wire_format_lite.cc in Sources */,
+				C24EE38F1A26CF9000007A10 /* googletest.cc in Sources */,
+				C24EE3841A26CF9000007A10 /* repeated_field.cc in Sources */,
+				C2AD7BD41A37E19D00F627CF /* IMProtoVoiceCallProxy.mm in Sources */,
+				C24EE3911A26CF9000007A10 /* zcgzip.cc in Sources */,
+				5579B74B195C3AFF0007002B /* IMProtoChatRoom.mm in Sources */,
+				C24EE37D1A26CF9000007A10 /* tokenizer.cc in Sources */,
+				C24EE37C1A26CF9000007A10 /* strtod.cc in Sources */,
+				C24EE3891A26CF9000007A10 /* once.cc in Sources */,
+				C24EE3781A26CF9000007A10 /* generated_message_util.cc in Sources */,
+				C24EE3921A26CF9000007A10 /* text_format.cc in Sources */,
+				C23CACD91AA6B109009BE711 /* IMServiceLib.m in Sources */,
+				C24EE3741A26CF9000007A10 /* dynamic_message.cc in Sources */,
+				5506D12C194357CA00532EE8 /* IMUser.m in Sources */,
+				C24EE3811A26CF9000007A10 /* message.cc in Sources */,
+				C24EE3731A26CF9000007A10 /* descriptor_database.cc in Sources */,
+				C2AD7B331A35EA0B00F627CF /* IMFeatureRegistry.m in Sources */,
+				C24EE3751A26CF9000007A10 /* extension_set.cc in Sources */,
+				559733391945D5C90093FBDB /* address_book.pb.cpp in Sources */,
+				C23CACDC1AA6B120009BE711 /* IMUtil.mm in Sources */,
+				553349DA195A570A00A9AA25 /* IMFeatureGroupChat.m in Sources */,
+				C24EE3801A26CF9000007A10 /* zero_copy_stream_impl_lite.cc in Sources */,
+				C24EE3791A26CF9000007A10 /* coded_stream.cc in Sources */,
+				C24EE3941A26CF9000007A10 /* wire_format.cc in Sources */,
+				6069D6B62315280B00FB3416 /* IMServerAddress.m in Sources */,
+				C2AD7B2F1A35E95F00F627CF /* vcproxy.pb.cpp in Sources */,
+				C24EE37B1A26CF9000007A10 /* printer.cc in Sources */,
+				5506D13019435C8400532EE8 /* IMConfigData.m in Sources */,
+				552980041AD7F89B0035213D /* chatroom.pb.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		5506D1221943557400532EE8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_INHIBIT_ALL_WARNINGS = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"./IMServiceLib/proto/**",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "";
+				SDKROOT = iphoneos;
+				SYMROOT = "$(SRCROOT)/../build";
+			};
+			name = Debug;
+		};
+		5506D1231943557400532EE8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_INHIBIT_ALL_WARNINGS = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"./IMServiceLib/proto/**",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				OTHER_LDFLAGS = "";
+				SDKROOT = iphoneos;
+				SYMROOT = "$(SRCROOT)/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5506D1251943557400532EE8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				CLANG_CXX_LIBRARY = "compiler-default";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DSTROOT = /tmp/IMServiceLib.dst;
+				GCC_INPUT_FILETYPE = automatic;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "IMServiceLib/IMServiceLib-Prefix.pch";
+				GCC_WARN_INHIBIT_ALL_WARNINGS = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"./IMServiceLib/**",
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "8bf2bc19-c925-416e-b317-9e961f54bdb0";
+				SKIP_INSTALL = YES;
+				VALID_ARCHS = "armv7 arm64";
+			};
+			name = Debug;
+		};
+		5506D1261943557400532EE8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				CLANG_CXX_LIBRARY = "compiler-default";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DSTROOT = /tmp/IMServiceLib.dst;
+				GCC_INPUT_FILETYPE = automatic;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "IMServiceLib/IMServiceLib-Prefix.pch";
+				GCC_WARN_INHIBIT_ALL_WARNINGS = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"./IMServiceLib/**",
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "8bf2bc19-c925-416e-b317-9e961f54bdb0";
+				SKIP_INSTALL = YES;
+				VALID_ARCHS = "armv7 arm64";
+				WARNING_CFLAGS = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5506D0FA1943557400532EE8 /* Build configuration list for PBXProject "IMServiceLib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5506D1221943557400532EE8 /* Debug */,
+				5506D1231943557400532EE8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		5506D1241943557400532EE8 /* Build configuration list for PBXNativeTarget "IMServiceLib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5506D1251943557400532EE8 /* Debug */,
+				5506D1261943557400532EE8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5506D0F71943557400532EE8 /* Project object */;
+}

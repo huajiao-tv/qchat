@@ -1,0 +1,28 @@
+2020-01-06 14:43:09.331|127.0.0.1:9090|71395092760295088069|connect gateway cost|432917|test_llconn_delay
+2020-01-06 14:43:11.334|127.0.0.1:9090|71395092760295088069|login failed|initResp readfrom error: read tcp 127.0.0.1:49924->127.0.0.1:9090: i/o timeout|test_llconn_delay
+2020-01-06 14:43:21.336|127.0.0.1:9090|71395092760295088069|connect gateway cost|541410|test_llconn_delay
+2020-01-06 14:43:23.341|127.0.0.1:9090|71395092760295088069|login failed|loginResp readfrom error: read tcp 127.0.0.1:49925->127.0.0.1:9090: i/o timeout|test_llconn_delay
+2020-01-06 14:43:33.343|127.0.0.1:9090|71395092760295088069|connect gateway cost|434870|test_llconn_delay
+2020-01-06 14:43:35.345|127.0.0.1:9090|71395092760295088069|login failed|initResp readfrom error: read tcp 127.0.0.1:49926->127.0.0.1:9090: i/o timeout|test_llconn_delay
+2020-01-06 14:43:45.350|127.0.0.1:9090|71395092760295088069|connect gateway cost|250806|test_llconn_delay
+2020-01-06 14:43:47.355|127.0.0.1:9090|71395092760295088069|login failed|loginResp readfrom error: read tcp 127.0.0.1:49928->127.0.0.1:9090: i/o timeout|test_llconn_delay
+2020-01-06 14:43:57.360|127.0.0.1:9090|71395092760295088069|connect gateway cost|310764|test_llconn_delay
+2020-01-06 14:43:59.367|127.0.0.1:9090|71395092760295088069|login failed|loginResp readfrom error: read tcp 127.0.0.1:49930->127.0.0.1:9090: i/o timeout|test_llconn_delay
+2020-01-06 14:44:09.372|127.0.0.1:9090|71395092760295088069|connect gateway cost|327038|test_llconn_delay
+2020-01-06 14:44:11.375|127.0.0.1:9090|71395092760295088069|login failed|initResp readfrom error: read tcp 127.0.0.1:49931->127.0.0.1:9090: i/o timeout|test_llconn_delay
+2020-01-06 14:44:21.378|127.0.0.1:9090|71395092760295088069|connect gateway cost|332258|test_llconn_delay
+2020-01-06 14:44:23.382|127.0.0.1:9090|71395092760295088069|login failed|initResp readfrom error: read tcp 127.0.0.1:49934->127.0.0.1:9090: i/o timeout|test_llconn_delay
+2020-01-06 14:44:33.387|127.0.0.1:9090|71395092760295088069|connect gateway cost|202715|test_llconn_delay
+2020-01-06 14:44:35.395|127.0.0.1:9090|71395092760295088069|login failed|loginResp readfrom error: read tcp 127.0.0.1:49944->127.0.0.1:9090: i/o timeout|test_llconn_delay
+2020-01-06 14:44:45.399|127.0.0.1:9090|71395092760295088069|connect gateway cost|316795|test_llconn_delay
+2020-01-06 14:44:47.404|127.0.0.1:9090|71395092760295088069|login failed|initResp readfrom error: read tcp 127.0.0.1:49945->127.0.0.1:9090: i/o timeout|test_llconn_delay
+2020-01-06 14:44:57.410|127.0.0.1:9090|71395092760295088069|connect gateway cost|977905|test_llconn_delay
+2020-01-06 14:44:59.414|127.0.0.1:9090|71395092760295088069|login failed|initResp readfrom error: read tcp 127.0.0.1:49946->127.0.0.1:9090: i/o timeout|test_llconn_delay
+2020-01-06 14:45:09.418|127.0.0.1:9090|71395092760295088069|connect gateway cost|247293|test_llconn_delay
+2020-01-06 14:45:11.422|127.0.0.1:9090|71395092760295088069|login failed|loginResp readfrom error: read tcp 127.0.0.1:49955->127.0.0.1:9090: i/o timeout|test_llconn_delay
+2020-01-06 14:45:21.428|127.0.0.1:9090|71395092760295088069|connect gateway cost|286222|test_llconn_delay
+2020-01-06 14:45:21.438|127.0.0.1:9090|71395092760295088069|login cost|10156161|test_llconn_delay
+2020-01-06 14:45:21.441|127.0.0.1:9090|71395092760295088069|get im info cost|2890413|test_llconn_delay
+2020-01-06 14:45:21.442|127.0.0.1:9090|71395092760295088069|get peer info cost|1561706|test_llconn_delay
+2020-01-06 14:45:21.444|127.0.0.1:9090|71395092760295088069|get public info cost|1467397|test_llconn_delay
+2020-01-06 14:45:23.448|127.0.0.1:9090|71395092760295088069|join chatroom cost|2004606011|test_llconn_delay

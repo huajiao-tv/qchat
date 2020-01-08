@@ -1,0 +1,558 @@
+package qihoo.protocol.chatroom;
+
+option java_package = "com.qihoo.contact.cloud.protocol.messages";
+option java_outer_classname = "ChatRoom";
+
+
+//-------------------basic info---------------------
+/*
+ * key-value message
+ */
+message CRPair {
+    required string key   = 1;                      //key word in pair
+    optional bytes value  = 2;                      //value in pair
+}
+
+/*
+ * chat room user info message
+ * userid: user unique id, in our system, it's jid.
+ * qid: qihoo account id, it's unique in qihoo system. client should fill this field.
+ * name: user nick name, each message, user can set his/her nick name.
+ *
+ *
+ * for this milestone, the following three fields are reserved for future:
+ * publicsetting: user can put his property in this field, and these properties are visuable for other members
+ *      isregister => 1--360 registry user, 0--no 360 registry user
+ * privatesetting: user can put his property in this field, and these properties are not visuable for other members
+ *      area => location area
+ *      msgproc => msgrouter process name
+ * status: indicate one user's status.
+ */
+message CRUser {
+    optional bytes   userid = 1;                      // jid
+    optional string  name = 2;                        // user nick name
+
+    //reserve fields
+    repeated CRPair  publicsetting = 3;               // property list(just for extent in future)
+    repeated CRPair  privatesetting = 4;              //user's private property list
+    optional int32 status = 5;                        //use to tell client this user's status
+    optional bytes userdata = 6;                      //user reserve data
+}
+
+/*
+ * chat room message
+ * roomid: identify a room
+ * creater: who create this room
+ * name: room name
+ * version: room version
+ * maxmsgid: max msg id in this room
+ * memcountlimit: upper limit of member count
+ * roomtype: default is 'game'
+ * members: all room members include creater
+ * properties: it's for future extend, wen can save icon, signature,...
+ *      regmemcount => int register member count
+ *      memcount => int all member count
+ *
+ * blacklist: jid list which can't join this chatroom
+ */
+message ChatRoom {
+    required bytes    roomid = 1;                     // room id
+    optional CRUser   creater = 2;                    // creater
+    optional string   name    = 3;                    // romm name
+    optional uint64   version = 4;                    // room version when updated it increases 1
+    optional uint64   maxmsgid = 5;                   // max msg id
+    optional uint64   memcountlimit = 6;              // max member count, by default it's 100
+    optional string   roomtype = 7;                   // chat room type,has no chance to change once create
+    repeated CRPair   properties = 8;                 // room property list
+    repeated CRUser   members = 9;                    // room members
+
+    repeated bytes    blacklist = 10;                  // black list of jid
+    optional string   gameid    = 11;                 //gameid
+
+    repeated CRUser   tempmembers   = 12;            //no qid members(only use by chatroom)
+
+
+    optional bytes partnerdata = 13;
+}
+
+
+//-------------------command list-------------------
+
+//------create chat room------//
+/* Request: user -> server
+ *
+ * creater: room's creater;
+ * roomname: room name
+ * gameid: sticked game id
+ * members: init room members
+ *
+ */
+message CreateChatRoomRequest {
+    optional string   gameid    = 1;                //game id
+    optional string   roomname  = 2;                //expect group name
+    optional uint64   memcountlimit = 3;            //max member count
+    optional string   roomtype = 4;                 //chat room type
+    repeated CRUser   members   = 5;                //init members
+
+    optional CRUser   creater   = 6;                //[server internal usage] room creater
+    repeated CRPair   properties = 7;               // room property list
+}
+/* Response:
+ * room: if create successful, return whole room info
+ */
+message CreateChatRoomResponse {
+    optional ChatRoom room = 1;                     //create successful -> room message; create failed -> undefined
+}
+
+message CreateMultiChatRoomRequest
+{
+    repeated CreateChatRoomRequest rooms = 1; // creater in rooms should not used, use creater in CreateMultiChatRoomRequest.
+    optional CRUser   creater   = 2;
+}
+
+message CreateMultiChatRoomResponse {
+    repeated ChatRoom rooms = 1;                     //create successful -> room message; create failed -> undefined
+    optional CRUser   creater   = 2;
+}
+
+//------get room detail info------//
+/*
+ * Request: user -> server
+ * roomid: roomid
+ */
+message GetChatRoomDetailRequest {
+    required bytes roomid = 1;                     // room id
+    optional int32 index = 2;                      // expect begin user index, at least 1 ~ n
+    optional int32 offset = 3;                     // expect get user count
+}
+/*
+ * [Response]
+ * room: now it contains one room whole info.
+ *
+ */ 
+message GetChatRoomDetailResponse {
+    optional ChatRoom room = 1;
+}
+
+
+//-------Apply join room--------//
+/*
+ * Request: user -> server
+ *
+ * roomid: room id;
+ * room: which is used between chatroom server and db
+ */
+message ApplyJoinChatRoomRequest {
+    required bytes roomid = 1;                     // room id
+                                                   //[server internal usage]
+    optional ChatRoom  room  = 2;
+    optional int32 userid_type = 3;                //0--non qid user， 1--qid user
+    optional bytes userdata = 4;                   //user reserve data
+    optional bool no_userlist = 5 [default=false]; //client join callback do not need userlist
+}
+/*
+ * [Response]
+ * room: if successful, server return whole room info
+ * pull_lost: indicates whether pull important lost message in chatroom, default is true
+ */
+message ApplyJoinChatRoomResponse {
+    optional ChatRoom room = 1;
+    optional bool pull_lost = 2 [default = true];
+}
+
+
+//-----leave chat room-----//
+/* Request: user -> server
+ *
+ * roomid: room id;
+ * room: which is used between chatroom server and db
+ */
+message QuitChatRoomRequest {
+    required bytes roomid = 1;                     // room id
+    optional ChatRoom  room  = 2;                  // [server internal usage]
+}
+// Response
+message QuitChatRoomResponse {
+    optional ChatRoom room = 1;
+}
+
+
+//-----query all room id------//
+/* Request: user -> server
+ *
+ * list all existing game and room mapping
+ */
+message QueryAllGameRoomRequest {
+
+}
+
+message QueryAllGameRoomResponse{
+    repeated CRPair maplist = 1;  //key: game id, value: room id
+}
+
+
+
+//-----query chat room id-----//
+/* Request: user -> server
+ *
+ * gameid: game id;
+ */
+message QueryChatRoomIDRequest {
+    required string gameid = 1;
+}
+// Response
+message QueryChatRoomIDResponse {
+    optional bytes roomid = 1;
+    optional string gameid = 2;   //fill request gameid
+}
+
+
+//-----update chat room related game id-----//
+/* Request: user -> server
+ *
+ * roomid: room id
+ * gameid: game id;
+ */
+message UpdateRoomIDRequest {
+    required string gameid = 1;
+    required bytes roomid = 2;
+}
+// Response
+message UpdateRoomIDResponse {
+}
+
+
+
+//------update chat room-----//
+/* Request: user -> server
+ * room: now it only support update room's name and game id
+ */
+message UpdateChatRoomRequest {
+    required bytes roomid = 1;
+    required ChatRoom  room  = 2;
+}
+// Response:
+// if successful, room field is valid
+message UpdateChatRoomResponse {
+    optional ChatRoom room = 1;
+}
+
+
+//-----kick member from group-----//
+/* Request: user -> server
+ * user: init user, if client not fill, server will get from msgrouter
+ * group: contain groupid
+ * members: kick out members, each one should contain userid
+ */
+message KickChatRoomMemberRequest {
+    required bytes roomid = 1;                   //room id
+	repeated CRUser members = 2;                 //cr member
+
+
+    optional ChatRoom room = 3;                  //[server internal usage]room, it's only for chatroom server to db server
+}
+message KickChatRoomMemberResponse {
+    optional ChatRoom room = 1;                  //new chat room info
+}
+
+/* Request: chatroom -> chatroom dba
+* it's internal request
+ */
+message SyncRoomToDBRequest {
+    required bytes roomid = 1;                   //room id
+}
+
+
+
+//-----create chat room notify-----//
+//send to all member including creator
+message CreateChatRoomNotify {
+    required ChatRoom  room = 1;                //new room detail
+}
+
+//-----new member join chat room-----//
+// Notify: server -> user
+//send to all member including join members
+message MemberJoinChatRoomNotify {
+	required ChatRoom  room = 1;                   //chat room (roomid, version, members only contain new members, current member count property)
+}
+
+//-----member quit chat room notify-----//
+// Notify: server -> user
+//send to all member excluding quiting member
+message MemberQuitChatRoomNotify {
+	required ChatRoom  room = 1;                  //chat room (roomid, version, members only contain quit members, current member count property)
+}
+
+//-----kick member notify-----//
+// Notify: server -> user
+//send to all member including kicked member
+message KickMemberNotify {
+	required ChatRoom  room = 1;                  //chat room (roomid, version, members only contain leave members)
+
+
+    optional CRUser   user = 2;                   //[server internal usage]who send out kick action
+}
+
+//-----update chatroom notify-----//
+// Notify: server -> user
+//send to all members
+message UpdateChatRoomNotify{
+    required ChatRoom room = 1;                  //chat room (roomid, version, changed fields)
+    optional CRUser user = 2;                    //who change these properties
+}
+
+
+//-----group message list-----//
+/* this message only for group server to dba server, and client <-> dba
+ * client check msgtype, if it's notify message, client parse as ServerNotify
+ *msgtype option:
+ * 200 -- CreateChatRoomNotify valid;
+ * 201 -- MemberJoinChatRoomNotify valid;
+ * 202 -- MemberQuitChatRoomNotify valid;
+ * 203 -- KickMemberNotify valid;
+ * 204 -- UpdateChatRoomNotify valid;
+ * 0   -- msgcontent valid(text);
+ * 1   -- msgcontent valid(voice)
+ * 2   -- msgcontent valid(picture)
+ */
+message ChatRoomMessageRequest{
+    optional CRUser  sender       = 1;          //who send this message
+    required bytes roomid = 2;                  //which room should get this message
+    required int32 msgtype      = 3;            //indicate msg content, example text, voice, link
+    optional bytes msgcontent   = 4;            //msg content
+    optional bytes clientparameter = 5;         //client's paramter 
+    optional bytes clientcache =  6;            //cache client's custom data
+
+    //------notify list-------/
+    optional CreateChatRoomNotify createnotify = 7;   //create
+    optional MemberJoinChatRoomNotify joinnotify = 8; //join
+    optional MemberQuitChatRoomNotify quitnotify = 9; //quit
+    optional KickMemberNotify kicknotify = 10;        //kick
+    optional UpdateChatRoomNotify updatenotify = 11;  //update
+
+    repeated CRPair propertylist = 12;  //reserve for future
+}
+/*
+ * it's just return from dba to group server, never return to client.
+ */
+message ChatRoomMessageResponse{
+    optional uint64 msgid       = 1;            //successful msg id
+}
+
+
+/*
+ * this message is from chat room server to client, dba ignore it
+ */
+message ChatRoomNewMsg{
+    required bytes  roomid      =   1; // room id
+    optional CRUser  sender     =   2; //sender id
+    optional int32  msgtype     =   3; //msg type(0--text, 1--voice, 2--picture)
+    optional bytes  msgcontent  =   4; //content
+
+    optional int32 regmemcount  = 5;  //registry member count
+    optional int32 memcount = 6; //non-reg+reg member count
+    optional uint32 msgid = 7; //message id
+    optional uint32 maxid = 8; //max message id
+    optional uint64 timestamp = 9; //send time
+}
+
+
+/*
+ * this message is used to notify user which msg is not handled
+ * errorcode option:
+ * 110101 -- text content contains illegal word which is forbidden by government;
+ * 110102 -- text content contains dangerous uri;
+ * 110201 -- picture content contains illegal word which is forbidden by government;
+ * 110301 -- voice content contains illegal word which is forbidden by government;
+ */
+message ChatRoomErrorMsg{
+    required bytes roomid = 1;                     //room id
+    required uint64 clientsn = 2;                  //error msg id
+    optional int32  errorcode = 3;                 //error code
+}
+
+/*
+* complext notify which is combined three notify(newmsg, joinnotify, quitnotify)
+*/
+message ChatRoomMNotify{
+    required int32 type         = 1;  //1000 -- newmsgnotify, 1001 -- memberjoinnotify, 1002 -- memberquitnotify
+    required bytes data         = 2;  //1000 -- ChatRoomNewMsg binary, 1001 -- memberjoinnotify binary, 1002 -- memberquitnotify binary
+
+    optional int32 regmemcount  = 3;  //registry member count
+    optional int32 memcount = 4; //non-reg+reg member count
+}
+
+/*
+* subscribe request, if subscribe or unsubscribe chatroom messages
+*/
+message SubscribeRequest{
+    required bytes roomid       = 1;
+    optional bool sub           = 2 [default=false];
+}
+
+/*
+* subscribe response
+*/
+message SubscribeResponse{
+    required bytes roomid       = 1;
+    optional bool sub           = 2;
+}
+
+
+//-----message from user to server-----//
+ /**
+ * payloadtype options:
+ * 100 -- createchatroomreq ;
+ * 101 -- getchatroominforeq ;
+ * 102 -- applyjoinchatroomreq;
+ * 103 -- quitchatroomreq;
+ * 104 -- updatechatroomreq;
+ * 105 -- kickmemberreq;
+ * 106 -- querychatroomidreq;
+ * 107 -- updategameidreq;
+ * 108 -- queryallgameroomreq;
+ * 109 -- subreq;
+ * 200 -- syncroomtodba
+ * 300 -- chatroommessagereq;
+ */
+message ChatRoomUpToServer{
+    required uint32                             payloadtype =1;   
+	
+    optional CreateChatRoomRequest              createchatroomreq = 2;
+    optional GetChatRoomDetailRequest           getchatroominforeq = 3;
+    optional ApplyJoinChatRoomRequest           applyjoinchatroomreq = 4;
+    optional QuitChatRoomRequest                quitchatroomreq = 5;
+    optional UpdateChatRoomRequest              updatechatroomreq = 6;
+    optional KickChatRoomMemberRequest          kickmemberreq = 7;
+
+    optional QueryChatRoomIDRequest             querychatroomidreq = 8;
+    optional UpdateRoomIDRequest                updategameidreq = 9;
+    optional QueryAllGameRoomRequest            queryallgameroomreq = 10;
+
+
+    optional ChatRoomMessageRequest             chatroommessagereq = 11;
+    optional CreateMultiChatRoomRequest         createrooms = 12;
+
+
+    optional SyncRoomToDBRequest                syncroomtodba = 13;
+    optional SubscribeRequest                   subreq = 14;
+}
+
+//-----message from server to user-----//
+/**
+ * payloadtype options:
+ * 100 -- createchatroomresp ;
+ * 101 -- getchatroominforesp ;
+ * 102 -- applyjoinchatroomresp;
+ * 103 -- quitchatroomresp;
+ * 104 -- updatechatroomresp;
+ * 105 -- kickmemberresp;
+ * 106 -- querychatroomidresp;
+ * 107 -- updategameidresp;
+ * 108 -- queryallgameroomresp;
+ * 109 -- subresp;
+ * 300 -- chatroommessageresp;
+ * 1000 -- newmsgnotify
+ * 1001 -- memberjoinnotify
+ * 1002 -- memberquitnotify
+ * 1003 -- multinotify
+ * 1100 -- errormsgnotify
+ * [result]
+ * 0   -- successful
+ *
+ * 5000 exist in [GetChatRoomDetailRequest,ApplyJoinChatRoomRequest,QuitChatRoomRequest,UpdateChatRoomRequest,KickChatRoomMemberRequest,ChatRoomMessageRequest]
+ * 50000 -- peration failed, chat room server error.
+ * 5001 exist in [All Request]
+ * 50001 -- protocol error, not support payload type.
+ * 5002 exist in [GetChatRoomDetailRequest,ApplyJoinChatRoomRequest,QuitChatRoomRequest,UpdateChatRoomRequest,KickChatRoomMemberRequest,ChatRoomMessageRequest]
+ * 50002 -- operation failed, because room id does not exist
+ * 5003 exist in [GetChatRoomDetailRequest,ApplyJoinChatRoomRequest,QuitChatRoomRequest,UpdateChatRoomRequest,KickChatRoomMemberRequest,ChatRoomMessageRequest]
+ * 50003 -- operation failed, bcause room id is not same between inner and outer.
+ *
+ * 10001 -- create chat room failed, because dba return error
+ * 10002 -- create chat room failed, because has no authority
+ * 10003 -- create chat room failed, because no game id
+ * 10004 -- create chat room failed, because member count is over upper limit
+ *
+ * 10101 -- get chat room info failed, because user does not join this chat room
+
+ * 
+ * 10201 -- join chat room failed, because room id does not exist
+ * 10202 -- join chat room failed, because member count reach upper limit
+ * 10203 -- join chat room failed, because dba return error
+ * 10204 -- join chat room failed, because user is in blacklist
+ * 
+ * 10301 -- quit chat room failed, because user is not chat room member
+ * 10302 -- quit chat room failed, because dba return error
+ *
+ * 10401 -- update chat room failed, because user has no authority
+ * 10402 -- update chat room failed, because dba return error
+ *
+ * 10501 -- kick member failed, because user has no authority
+ * 10502 -- kick member failed, because user is not in chatroom
+ * 10503 -- kick member failed, because dba return error
+ *
+ * 10601 -- query room id failed, because dba return error
+ *
+ * 10701 -- update game and room relationship failed, because user has no authority
+ * 10702 -- update game and room relationship failed, because not set game id
+ * 10703 -- update game and room relationship failed, because dba return error
+ *
+ * 10801 -- query all game room mapping failed, because user has no authority
+ * 10802 -- query all game room mapping failed, because dba return error
+ *
+ * 30001 -- send message failed, because user is not chat room member
+ * 30002 -- send message failed, because dba return error
+ */
+message ChatRoomDownToUser{
+    required int32                              result = 1;                 //0--successful, not 0--failed,
+      
+    required uint32                             payloadtype =2; 
+	
+    optional CreateChatRoomResponse             createchatroomresp = 3;
+    optional GetChatRoomDetailResponse          getchatroominforesp = 4;
+    optional ApplyJoinChatRoomResponse          applyjoinchatroomresp = 5;
+    optional QuitChatRoomResponse               quitchatroomresp = 6;
+    optional UpdateChatRoomResponse             updatechatroomresp = 7;
+    optional KickChatRoomMemberResponse         kickmemberresp = 8;
+
+    optional QueryChatRoomIDResponse            querychatroomidresp = 9;
+    optional UpdateRoomIDResponse               updategameidresp = 10;
+    optional QueryAllGameRoomResponse           queryallgameroomresp = 11;
+
+    optional ChatRoomMessageResponse            chatroommessageresp = 12; //[server internal usage]
+
+    optional ChatRoomNewMsg                     newmsgnotify = 13;  //new message notify
+
+    optional ChatRoomErrorMsg                   errormsgnotify = 14; //error message notify
+    optional CreateMultiChatRoomResponse        createrooms = 15;
+
+    optional MemberJoinChatRoomNotify           memberjoinnotify = 16; //new member join chatroom
+    optional MemberQuitChatRoomNotify           memberquitnotify = 17; //member quit chatroom
+    optional SubscribeResponse                  subresp = 18;
+
+
+    optional bytes                              reason = 100;  //error msg
+
+    repeated ChatRoomMNotify                    multinotify = 200; //multiple notify
+}
+
+/*roomid is used to dispatch to correct vnode
+ *
+ * roomid: for CreateChatRoomRequest, QueryChatRoomIDRequest, UpdateRoomIDRequest, QueryAllGameRoomRequest client
+ *         should fill by ramdon;
+ *         for other command, it must be existing room id
+ * uuid: it's identifier for server, for phone/client, it's not used;
+ * client_sn: it' identify a unique client message
+ */
+message ChatRoomPacket{
+    required bytes              roomid         = 1;
+    optional ChatRoomUpToServer to_server_data = 2;
+    optional ChatRoomDownToUser to_user_data   = 3;
+
+    optional string         uuid               = 4; //[server internal usage]
+    optional uint64         client_sn          = 5; //[server internal usage]
+
+    optional uint32         appid              = 6; //[reserve for future use]
+}

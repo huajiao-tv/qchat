@@ -1,0 +1,87 @@
+package qihoo.protocol.privatechat;
+
+option java_package = "com.qihoo.contact.cloud.protocol.messages";
+option java_outer_classname = "privatechat";
+
+
+message PChatPair {
+    required string key   = 1;                      //key word in pair
+    optional bytes value  = 2;                      //value in pair
+}
+
+/**
+* srcid: sender user id
+* destid: receiver user id
+* msgid: msg id
+* type: msg type(always 0)
+* data: msg body
+* sendtime: send msg time(mic seconds since 1970.01.01 00:00:00)
+*/
+message PChatMsg{
+    repeated PChatPair msgprops = 1;    //one msg property
+}
+
+//send msg
+message PChatSendMsgRequest{
+    required string  destID    = 1;     //receive user id
+    required int32   bodytype  = 2;     //body type
+    required bytes   bodydata  = 3;     //body data
+    optional uint32  expiresec = 4;     //msg expire seconds
+    optional int32   destappid = 5;     //receiver appid
+}
+
+// msgid: if save to dba, it's msg id, or it's always 0
+message PChatSendMsgResponse{
+    required int64   msgid = 1;
+    optional int32   code = 2;
+    optional string  reason = 3;
+}
+
+//get msg
+message PChatGetMsgRequest{
+    required int64 start      = 1;     //start msg id
+    required int32 count      = 2;     //msg count
+}
+
+message PChatGetMsgResponse{
+    repeated PChatMsg msglist = 1;     //msg list
+    optional int64 maxid      = 2;     //max msg id
+}
+
+message PChatNewMsgNotify{
+    optional PChatMsg msg     = 1;     //msg data
+    optional int64 maxid      = 2;     //max msg id
+}
+
+/*
+* payload:
+*    1001 -- sendreq,
+*    1002 -- getreq
+*/
+message PChatRequest{
+    required int32 payload  			    = 1;
+    optional PChatSendMsgRequest   sendreq      = 2; //send msg request
+    optional PChatGetMsgRequest    getreq       = 3; //get msg request
+}
+
+/*
+* payload:
+*    1001 -- sendreq,
+*    1002 -- getreq
+*    10001 -- msgnotify
+*/
+message PChatResponse {
+    required int32 payload  				 = 1;
+    required int32 result			         = 2;
+    optional string reason                   = 3;
+    optional PChatSendMsgResponse  sendres       = 4; //send msg response
+    optional PChatGetMsgResponse   getres        = 5; //get msg response
+
+    optional PChatNewMsgNotify     msgnotify = 100;  //new msg notify
+}
+
+message PChatPacket {
+    optional PChatRequest  request	    = 1;
+    optional PChatResponse response	    = 2;
+    optional string uuid                = 3;  //support async query
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="log">
+
+</div>
+<div class="handle">
+        <textarea id="config" name="config" cols="30" rows="10" placeholder="配置">
+        {
+            "flag": "qh",
+            "protocolVersion": 1,
+            "clientVersion": 101,
+            "appId": 2080,
+            "defaultKey": "3f190210cb1cf32a2378ee57900acf78",
+            "reserved": "",
+            "senderType": "jid",
+            "wsServer":"wss://bridge.huajiao.com",
+            "uid": "153338446",
+            "sign": "PTE3fcf3eWRlNRFlF0umOnCx6R5bGL0hldFPYOtdmX44SNwiD.TV4NjAzYBU4SqY"
+        }
+        </textarea>
+    <!--
+    ,
+
+            // uid: "30005627",
+            // sign: "30005627",
+    -->
+    <button id="connect">连接</button>
+    <textarea id="roomId" name="config" cols="30" rows="10" placeholder="直播间Id">290405039</textarea>
+    <button id="join">加入直播间</button>
+    <button id="quit">退出直播间</button>
+</div>
+</body>
+<script src="./index.js"></script>
+<style>
+    .error {
+        color: red;
+    }
+
+    .warn {
+        color: yellow;
+    }
+
+    .debug {
+        color: gray;
+    }
+
+    .handle {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100vw;
+        height: 200px;
+    }
+</style>
+</html>

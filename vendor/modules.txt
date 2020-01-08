@@ -1,0 +1,106 @@
+# github.com/go-sql-driver/mysql v1.4.1
+github.com/go-sql-driver/mysql
+# github.com/golang/protobuf v1.3.2
+github.com/golang/protobuf/proto
+github.com/golang/protobuf/protoc-gen-go/descriptor
+github.com/golang/protobuf/ptypes
+github.com/golang/protobuf/ptypes/any
+github.com/golang/protobuf/ptypes/duration
+github.com/golang/protobuf/ptypes/empty
+github.com/golang/protobuf/ptypes/timestamp
+# github.com/gorilla/websocket v1.4.0
+github.com/gorilla/websocket
+# github.com/huajiao-tv/gokeeper v0.0.0-20191231023438-caa223748aa9
+github.com/huajiao-tv/gokeeper/client
+github.com/huajiao-tv/gokeeper/model
+github.com/huajiao-tv/gokeeper/model/parser
+github.com/huajiao-tv/gokeeper/pb/go
+# github.com/johntech-o/gorpc v0.0.0-20190508161658-a63b4699b194
+github.com/johntech-o/gorpc
+# github.com/johntech-o/iphelper v0.0.0-20160608121843-96f2c4086b91
+github.com/johntech-o/iphelper
+# github.com/johntech-o/timewheel v0.0.0-20170621084024-0dfaa51dd881
+github.com/johntech-o/timewheel
+# github.com/lnnujxxy/protoc-gen-validate v0.0.16
+github.com/lnnujxxy/protoc-gen-validate/validate
+# github.com/huajiao-tv/qchat/utility v0.0.0-20180208031223-be5ae2b31d14
+github.com/huajiao-tv/qchat/utility/adminJson
+github.com/huajiao-tv/qchat/utility/channelpool
+github.com/huajiao-tv/qchat/utility/convert
+github.com/huajiao-tv/qchat/utility/cpool
+github.com/huajiao-tv/qchat/utility/cryption
+github.com/huajiao-tv/qchat/utility/exqueue
+github.com/huajiao-tv/qchat/utility/gzipPool
+github.com/huajiao-tv/qchat/utility/idgen
+github.com/huajiao-tv/qchat/utility/logger
+github.com/huajiao-tv/qchat/utility/lru
+github.com/huajiao-tv/qchat/utility/msgRedis
+github.com/huajiao-tv/qchat/utility/network
+github.com/huajiao-tv/qchat/utility/process
+github.com/huajiao-tv/qchat/utility/stat
+github.com/huajiao-tv/qchat/utility/util
+# github.com/silenceper/pool v0.0.0-20191105065223-1f4530b6ba17
+github.com/silenceper/pool
+# github.com/yvasiyarov/php_session_decoder v0.0.0-20180803065642-a065a3b0b7d1
+github.com/yvasiyarov/php_session_decoder/php_serialize
+# golang.org/x/net v0.0.0-20191119073136-fc4aabc6c914
+golang.org/x/net/http/httpguts
+golang.org/x/net/http2
+golang.org/x/net/http2/hpack
+golang.org/x/net/idna
+golang.org/x/net/internal/timeseries
+golang.org/x/net/trace
+# golang.org/x/sys v0.0.0-20191120155948-bd437916bb0e
+golang.org/x/sys/unix
+# golang.org/x/text v0.3.2
+golang.org/x/text/secure/bidirule
+golang.org/x/text/transform
+golang.org/x/text/unicode/bidi
+golang.org/x/text/unicode/norm
+# google.golang.org/appengine v1.6.5
+google.golang.org/appengine/cloudsql
+# google.golang.org/genproto v0.0.0-20191115221424-83cc0476cb11
+google.golang.org/genproto/googleapis/api/annotations
+google.golang.org/genproto/googleapis/rpc/status
+# google.golang.org/grpc v1.25.1
+google.golang.org/grpc
+google.golang.org/grpc/backoff
+google.golang.org/grpc/balancer
+google.golang.org/grpc/balancer/base
+google.golang.org/grpc/balancer/roundrobin
+google.golang.org/grpc/binarylog/grpc_binarylog_v1
+google.golang.org/grpc/codes
+google.golang.org/grpc/connectivity
+google.golang.org/grpc/credentials
+google.golang.org/grpc/credentials/internal
+google.golang.org/grpc/encoding
+google.golang.org/grpc/encoding/proto
+google.golang.org/grpc/grpclog
+google.golang.org/grpc/internal
+google.golang.org/grpc/internal/backoff
+google.golang.org/grpc/internal/balancerload
+google.golang.org/grpc/internal/binarylog
+google.golang.org/grpc/internal/buffer
+google.golang.org/grpc/internal/channelz
+google.golang.org/grpc/internal/envconfig
+google.golang.org/grpc/internal/grpcrand
+google.golang.org/grpc/internal/grpcsync
+google.golang.org/grpc/internal/resolver/dns
+google.golang.org/grpc/internal/resolver/passthrough
+google.golang.org/grpc/internal/syscall
+google.golang.org/grpc/internal/transport
+google.golang.org/grpc/keepalive
+google.golang.org/grpc/metadata
+google.golang.org/grpc/naming
+google.golang.org/grpc/peer
+google.golang.org/grpc/resolver
+google.golang.org/grpc/serviceconfig
+google.golang.org/grpc/stats
+google.golang.org/grpc/status
+google.golang.org/grpc/tap
+# gopkg.in/mgo.v2 v2.0.0-20190816093944-a6b53ec6cb22
+gopkg.in/mgo.v2
+gopkg.in/mgo.v2/bson
+gopkg.in/mgo.v2/internal/json
+gopkg.in/mgo.v2/internal/sasl
+gopkg.in/mgo.v2/internal/scram

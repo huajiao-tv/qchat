@@ -1,0 +1,123 @@
+package qihoo.protocol.vcproxy;
+
+option java_package = "com.comm.protobuf.messages";
+option java_outer_classname = "VoiceCallProxy";
+
+
+
+//------------------- common begin ---------------------
+/*
+ * key-value message
+ */
+message CRPair {
+    required string key   = 1;                      //key word in pair
+    optional bytes value  = 2;                      //value in pair
+}
+
+/*
+service error
+-define(ERROR_VCP_INNER,       -100).
+-define(ERROR_VCP_MC_PASSED,   -101).
+-define(ERROR_MCCLIENT_CALL,   -102).
+-define(ERROR_NOFOUND_CHANNEL, -103).
+*/
+
+message ErrorInfo {
+    required int32  error_no   = 1;
+    optional string error_desc = 2;
+}
+
+message user_info{
+    required string  user_id          = 1;
+    optional uint32  operator_id      = 2 [default = 0];         //
+    optional uint32  area_id          = 3 [default = 0];         //
+    optional uint32  net_type         = 4;                       //0:unkonwn 1:2g 2:3g 3:wifi 4:ethe
+}
+
+//------------------- common end   ---------------------
+
+//------------------- command list begin -------------------
+message CreateChannelRequest{
+    required string     requester        = 1;                       //channel creater
+    optional uint32     operator_id      = 2 [default = 0];         //
+    optional uint32     area_id          = 3 [default = 0];         //
+    optional uint32     net_type         = 4;                       //0:unkonwn 1:2g 2:3g 3:wifi 4:ethe
+    repeated user_info  member_list      = 5;
+}
+
+message CreateChannelResponse{
+    required bytes   channel_id       = 1;
+    required bytes   channel_info     = 2;
+}
+
+//###########################################################
+message CheckChannelRequest{
+    required string  requester        = 1;
+    required bytes   channel_id       = 2;
+}
+
+message CheckChannelResponse{
+    required int32   curr_member_num  = 1;        // -1 : channel invalid; ge 0 : channel valid
+    repeated string  curr_member_list = 2;
+}
+
+//###########################################################
+message RestoreChannelRequest{
+    required string  requester        = 1;
+    required bytes   channel_id       = 2;
+}
+
+message RestoreChannelResponse{
+    required bytes   new_channel_id   = 1;
+    required bytes   new_channel_info = 2;
+    optional uint32  curr_member_num  = 3;
+    repeated string  curr_member_list = 4;
+}
+
+//###########################################################
+message NewChannelNotify{
+}
+
+//------------------- command list end   -------------------
+
+//----- message classify enter -----//
+/**
+  payload_type options:
+  1.user --> server :
+    100000 -- CreateChannelRequest;
+    100001 -- CheckChannelRequest;
+    100002 -- RestoreChannelRequest;
+    
+  2.server --> user
+    200000 -- CreateChannelResponse;
+    200001 -- CheckChannelResponse;
+    200002 -- RestoreChannelResponse;
+    
+  3.server --> user  
+    300000 -- NewChannelNotify;
+ */ 
+message VCProxyUserToServer{
+    optional CreateChannelRequest   create_channel_req   = 1;
+    optional CheckChannelRequest    check_channel_req    = 2;
+    optional RestoreChannelRequest  restore_channel_req  = 3;
+}
+
+message VCProxyServerToUser{
+    required int32                  result               = 1;        //0--successful, not 0--failed,
+    optional ErrorInfo              error_info           = 2;
+    optional CreateChannelResponse  create_channel_resp  = 3;
+    optional CheckChannelResponse   check_channel_resp   = 4;
+    optional RestoreChannelResponse restore_channel_resp = 5;
+}
+
+message VCProxyNotify{
+    optional NewChannelNotify     new_channel_notify  = 1;
+}
+
+// all message main enter
+message VCProxyPacket{
+    required uint32               payload_type    = 1;
+    optional VCProxyUserToServer  user_data       = 2;
+    optional VCProxyServerToUser  server_data     = 3;
+    optional VCProxyNotify        notify_data     = 4;           //vcp message notify
+}
