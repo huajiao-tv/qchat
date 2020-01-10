@@ -1,0 +1,126 @@
+version: '3'
+
+services:
+
+  qchat_redis:
+    image: redis:4-alpine
+    ports:
+      - 6379:6379
+    entrypoint:
+      "redis-server --appendonly yes --requirepass 'redis-secret'"
+
+  qchat_monogo:
+    image: mongo:3.4
+    ports:
+      - 27017:27017
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=huajiao.tv-123
+    volumes:
+#      - ./deploy/db/data:/data/db
+      - ./deploy/db/init.d:/docker-entrypoint-initdb.d
+
+  gokeeper_etcd:
+    image: quay.io/coreos/etcd:v3.3.18
+    ports:
+      - 2379
+      - 2380
+    environment:
+      - ALLOW_NONE_AUTHENTICATION=yes
+      - ETCD_LISTEN_CLIENT_URLS=http://0.0.0.0:2379
+      - ETCD_ADVERTISE_CLIENT_URLS=http://0.0.0.0:2379
+
+  gokeeper:
+    image: huajiao/gokeeper
+    ports:
+      - 7000
+      - 7001
+      - 17000
+      - 17001
+    environment:
+      - DEFAULT_CLUSTER=qchat_dev
+    volumes:
+      - "./deploy/conf:/tmp/gokeeper/init/qchat_dev"
+    depends_on:
+      - gokeeper_etcd
+
+  qchat_gateway:
+    image: huajiao/qchat-gateway
+    ports:
+      - 80
+      - 443
+      - 6220
+      - 16200
+    environment:
+      - CLUSTER=qchat_dev
+      - KEEPER=gokeeper:7000
+    depends_on:
+      - gokeeper
+
+  qchat_router:
+    image: huajiao/qchat-router
+    ports:
+      - 6320
+      - 16300
+    environment:
+      - CLUSTER=qchat_dev
+      - KEEPER=gokeeper:7000
+    depends_on:
+      - gokeeper
+
+  qchat_session:
+    image: huajiao/qchat-session
+    ports:
+      - 6420
+      - 16400
+    environment:
+      - CLUSTER=qchat_dev
+      - KEEPER=gokeeper:7000
+    depends_on:
+      - gokeeper
+
+  qchat_saver:
+    image: huajiao/qchat-saver
+    ports:
+      - 6520
+      - 16500
+    environment:
+      - CLUSTER=qchat_dev
+      - KEEPER=gokeeper:7000
+    depends_on:
+      - qchat_redis
+      - qchat_monogo
+      - gokeeper
+
+  qchat_center:
+    image: huajiao/qchat-center
+    ports:
+      - 80
+      - 6620
+      - 16600
+    environment:
+      - CLUSTER=qchat_dev
+      - KEEPER=gokeeper:7000
+    depends_on:
+      - gokeeper
+
+  qchat_coordinator:
+    image: huajiao/qchat-coordinator
+    ports:
+      - 6720
+      - 16700
+    environment:
+      - CLUSTER=qchat_dev
+      - KEEPER=gokeeper:7000
+    depends_on:
+      - gokeeper
+
+  qchat_dispatcher:
+    image: huajiao/qchat-dispatcher
+    ports:
+      - 80
+    environment:
+      - CLUSTER=qchat_dev
+      - KEEPER=gokeeper:7000
+    depends_on:
+      - gokeeper

@@ -24,7 +24,7 @@ services:
     container_name: qchat_redis
     image: 'redis'
     entrypoint:
-      "redis-server --appendonly yes --requirepass 'redis'"
+      "redis-server --appendonly yes --requirepass 'redis-secret'"
   qchat_mongo:
     container_name: qchat_mongo
     build:
@@ -34,4 +34,4 @@ services:
       - '27017:27017'
     environment:
       - USER=root
-      - PASSWORD=123456
+      - PASSWORD=huajiao.tv-123

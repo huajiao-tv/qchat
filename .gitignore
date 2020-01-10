@@ -103,4 +103,19 @@ dist
 # TernJS port file
 .tern-port
 
+.DS_Store
+
+# Common backup files
+*.swp
+*.bak
+*.tmp
+*~
+
+# Various IDEs
+.project
+.idea/
+*.tmproj
+.vscode/
+
+# golang
 go.sum
